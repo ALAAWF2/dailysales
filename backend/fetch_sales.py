@@ -182,18 +182,20 @@ def git_commit_and_push():
     repo_url = f"https://{token}@github.com/{repo}.git"
 
     try:
-       subprocess.run(
-    ["git", "config", "--global", "user.email", "cron@render.com"],
-    check=True
-)
-subprocess.run(
-    ["git", "config", "--global", "user.name", "Render Cron"],
-    check=True
-)
-
+        subprocess.run(
+            ["git", "config", "--global", "user.email", "cron@render.com"],
+            check=True
+        )
+        subprocess.run(
+            ["git", "config", "--global", "user.name", "Render Cron"],
+            check=True
+        )
 
         subprocess.run(["git", "add", "data.json"], check=True)
-        subprocess.run(["git", "commit", "-m", "Auto update sales data"], check=False)
+        subprocess.run(
+            ["git", "commit", "-m", "Auto update sales data"],
+            check=False
+        )
         subprocess.run(["git", "push", repo_url, branch], check=True)
 
         print("✅ data.json committed & pushed to GitHub")
@@ -247,5 +249,6 @@ def main():
 
 if __name__ == "__main__":
     main()
+
 
 
