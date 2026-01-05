@@ -135,7 +135,8 @@
 
         async function loadData() {
             try {
-                const response = await fetch('data.json?t=' + new Date().getTime());
+                const response = await fetch('https://dailysales.onrender.com/data.json?t=' + new Date().getTime());
+
                 if (!response.ok) throw new Error('Failed to load data');
 
                 currentData = await response.json();
@@ -199,5 +200,6 @@
         setInterval(loadData, 60000);
     </script>
 </body>
+
 
 </html>
