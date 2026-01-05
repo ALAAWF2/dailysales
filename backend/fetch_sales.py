@@ -13,7 +13,7 @@ from datetime import datetime, timezone, timedelta
 TIMEOUT = 120
 
 # نحفظ data.json في جذر الريبو (جنب index.html)
-OUTPUT_JSON = "../data.json"
+OUTPUT_JSON = "data.json"
 
 # =========================
 # LOAD ENV
@@ -192,7 +192,7 @@ subprocess.run(
 )
 
 
-        subprocess.run(["git", "add", "../data.json"], check=True)
+        subprocess.run(["git", "add", "data.json"], check=True)
         subprocess.run(["git", "commit", "-m", "Auto update sales data"], check=False)
         subprocess.run(["git", "push", repo_url, branch], check=True)
 
@@ -247,4 +247,5 @@ def main():
 
 if __name__ == "__main__":
     main()
+
 
