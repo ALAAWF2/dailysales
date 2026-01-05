@@ -11,9 +11,12 @@ from datetime import datetime, timezone, timedelta
 # =========================
 TIMEOUT = 120
 
-# مهم: نكتب في جذر الريبو (جنب index.html)
-OUTPUT_JSON = "../data.json"
-INDEX_HTML = "../index.html"
+# Determine the absolute path to the backend directory
+BACKEND_DIR = os.path.dirname(os.path.abspath(__file__))
+# Construct paths relative to the backend directory
+# intended: backend/../data.json -> root/data.json
+OUTPUT_JSON = os.path.normpath(os.path.join(BACKEND_DIR, "..", "data.json"))
+INDEX_HTML = os.path.normpath(os.path.join(BACKEND_DIR, "..", "index.html"))
 
 # =========================
 # LOAD ENV
@@ -222,7 +225,7 @@ def push_to_github():
         subprocess.run(["git", "config", "user.name", "Render Bot"], check=True)
 
         # Add file
-        subprocess.run(["git", "add", "data.json"], check=True)
+        subprocess.run(["git", "add", OUTPUT_JSON], check=True)
 
         # Commit
         status = subprocess.run(["git", "status", "--porcelain"], capture_output=True, text=True)
