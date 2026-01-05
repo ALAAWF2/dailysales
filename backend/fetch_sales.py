@@ -3,7 +3,6 @@ import json
 import requests
 import pandas as pd
 import msal
-import subprocess
 from dotenv import load_dotenv
 from datetime import datetime, timezone, timedelta
 
@@ -12,8 +11,9 @@ from datetime import datetime, timezone, timedelta
 # =========================
 TIMEOUT = 120
 
-# نحفظ data.json في جذر الريبو (جنب index.html)
-OUTPUT_JSON = "data.json"
+# مهم: نكتب في جذر الريبو (جنب index.html)
+OUTPUT_JSON = "../data.json"
+INDEX_HTML = "../index.html"
 
 # =========================
 # LOAD ENV
@@ -53,11 +53,10 @@ def get_access_token():
     if "access_token" in result:
         return result["access_token"]
 
-    print("❌ Auth error:", result)
-    raise Exception("Authentication failed")
+    raise Exception(f"Auth failed: {result}")
 
 # =========================
-# FETCH (Today + Yesterday window)
+# FETCH (Today + Yesterday)
 # =========================
 def fetch_sales_last_two_days(token):
     headers = {
@@ -74,19 +73,13 @@ def fetch_sales_last_two_days(token):
     start_str = yesterday_start.strftime("%Y-%m-%dT%H:%M:%SZ")
     end_str = tomorrow_start.strftime("%Y-%m-%dT%H:%M:%SZ")
 
-    filter_query = (
-        f"PaymentAmount ne 0 "
-        f"and TransactionDate ge {start_str} "
-        f"and TransactionDate lt {end_str}"
-    )
-
     query_url = (
         f"{BASE_URL}"
-        f"?$filter={filter_query}"
+        f"?$filter=PaymentAmount ne 0 "
+        f"and TransactionDate ge {start_str} "
+        f"and TransactionDate lt {end_str}"
         f"&$select=OperatingUnitNumber,PaymentAmount,TransactionDate"
     )
-
-    print(f"DEBUG: Fetching data from {start_str} to {end_str}")
 
     rows = []
     while query_url:
@@ -95,8 +88,6 @@ def fetch_sales_last_two_days(token):
         data = r.json()
         rows.extend(data.get("value", []))
         query_url = data.get("@odata.nextLink")
-        if query_url:
-            print("DEBUG: Fetching next page...")
 
     return pd.DataFrame(rows)
 
@@ -165,43 +156,11 @@ def export_json(today_list, yesterday_list):
     with open(OUTPUT_JSON, "w", encoding="utf-8") as f:
         json.dump(payload, f, ensure_ascii=False, indent=2)
 
+    # نجبر GitHub Pages يعيد deploy
+    if os.path.exists(INDEX_HTML):
+        os.utime(INDEX_HTML, None)
+
     print("✅ data.json updated (Today & Yesterday)")
-
-# =========================
-# GIT PUSH
-# =========================
-def git_commit_and_push():
-    token = os.getenv("GITHUB_TOKEN")
-    repo = os.getenv("GITHUB_REPO")
-    branch = os.getenv("GITHUB_BRANCH", "main")
-
-    if not token or not repo:
-        print("⚠️ GitHub credentials missing, skipping push")
-        return
-
-    repo_url = f"https://{token}@github.com/{repo}.git"
-
-    try:
-        subprocess.run(
-            ["git", "config", "--global", "user.email", "cron@render.com"],
-            check=True
-        )
-        subprocess.run(
-            ["git", "config", "--global", "user.name", "Render Cron"],
-            check=True
-        )
-
-        subprocess.run(["git", "add", "data.json"], check=True)
-        subprocess.run(
-            ["git", "commit", "-m", "Auto update sales data"],
-            check=False
-        )
-        subprocess.run(["git", "push", repo_url, branch], check=True)
-
-        print("✅ data.json committed & pushed to GitHub")
-
-    except subprocess.CalledProcessError as e:
-        print("❌ Git push failed:", e)
 
 # =========================
 # MAIN
@@ -216,7 +175,6 @@ def main():
     df = fetch_sales_last_two_days(token)
     if df.empty:
         export_json([], [])
-        git_commit_and_push()
         return
 
     df["TransactionDate"] = pd.to_datetime(df["TransactionDate"])
@@ -225,30 +183,18 @@ def main():
     today_start = now_utc.replace(hour=0, minute=0, second=0, microsecond=0)
     yesterday_start = today_start - timedelta(days=1)
 
-    try:
-        df_today = df[df["TransactionDate"] >= pd.Timestamp(today_start)]
-        df_yesterday = df[
-            (df["TransactionDate"] >= pd.Timestamp(yesterday_start)) &
-            (df["TransactionDate"] < pd.Timestamp(today_start))
-        ]
-    except:
-        df["TransactionDate"] = df["TransactionDate"].dt.tz_localize(None)
-        df_today = df[df["TransactionDate"] >= today_start.replace(tzinfo=None)]
-        df_yesterday = df[
-            (df["TransactionDate"] >= yesterday_start.replace(tzinfo=None)) &
-            (df["TransactionDate"] < today_start.replace(tzinfo=None))
-        ]
+    df_today = df[df["TransactionDate"] >= today_start]
+    df_yesterday = df[
+        (df["TransactionDate"] >= yesterday_start) &
+        (df["TransactionDate"] < today_start)
+    ]
 
     mapping_df = load_mapping()
 
-    list_today = process_group(df_today, mapping_df)
-    list_yesterday = process_group(df_yesterday, mapping_df)
-
-    export_json(list_today, list_yesterday)
-    git_commit_and_push()
+    export_json(
+        process_group(df_today, mapping_df),
+        process_group(df_yesterday, mapping_df)
+    )
 
 if __name__ == "__main__":
     main()
-
-
-
