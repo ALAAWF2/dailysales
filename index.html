@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Executive Sales Dashboard</title>
+
     <style>
         body {
             font-family: 'Segoe UI', system-ui, sans-serif;
@@ -31,6 +32,11 @@
             margin-top: 5px;
         }
 
+        .controls {
+            margin-top: 20px;
+            text-align: center;
+        }
+
         .grid-container {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -49,8 +55,9 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            border-left: 5px solid #2563eb;
-            /* Blue accent */
+
+            /* ORANGE ACCENT */
+            border-left: 5px solid #f97316;
         }
 
         .card:hover {
@@ -74,12 +81,10 @@
 
         .sales-amount.positive {
             color: #059669;
-            /* Green */
         }
 
         .sales-amount.negative {
             color: #dc2626;
-            /* Red */
         }
 
         .no-data {
@@ -88,26 +93,10 @@
             padding: 40px;
             color: #888;
         }
-    </style>
-</head>
 
-<body>
-
-    <div class="header">
-        <h1>Executive Sales Dashboard</h1>
-        <div class="meta-info">
-            Date: <span id="displayDate">-</span> | Last Update: <span id="lastUpdate">-</span>
-        </div>
-
-        <div class="controls" style="margin-top: 20px; text-align: center;">
-            <button id="btnToday" onclick="setMode('today')" class="btn active">Today</button>
-            <button id="btnMonth" onclick="setMode('month')" class="btn">Yesterday</button>
-        </div>
-    </div>
-
-    <style>
+        /* BUTTONS */
         .btn {
-            background: #e2e8f0;
+            background: #e5e7eb;
             border: none;
             padding: 10px 24px;
             border-radius: 20px;
@@ -119,11 +108,35 @@
         }
 
         .btn.active {
-            background: #2563eb;
+            background: #f97316;
             color: white;
-            box-shadow: 0 2px 5px rgba(37, 99, 235, 0.3);
+            box-shadow: 0 2px 5px rgba(249, 115, 22, 0.4);
         }
     </style>
+</head>
+
+<body>
+
+    <div class="header">
+        <h1>Executive Sales Dashboard</h1>
+
+        <div class="meta-info">
+            Date:
+            <span id="displayDate">-</span>
+            |
+            Last Update:
+            <span id="lastUpdate">-</span>
+        </div>
+
+        <div class="controls">
+            <button id="btnToday" onclick="setMode('today')" class="btn active">
+                Today
+            </button>
+            <button id="btnYesterday" onclick="setMode('yesterday')" class="btn">
+                Yesterday
+            </button>
+        </div>
+    </div>
 
     <div id="dashboardGrid" class="grid-container">
         <div class="no-data">Loading data...</div>
@@ -131,55 +144,68 @@
 
     <script>
         let currentData = null;
-        let currentMode = 'today'; // today or month
+        let currentMode = 'today'; // today | yesterday
 
         async function loadData() {
             try {
-                const response = await fetch('https://dailysales.onrender.com/data.json?t=' + new Date().getTime());
+                /**
+                 * IMPORTANT:
+                 * data.json موجود في نفس الريبو
+                 * GitHub Pages
+                 */
+                const response = await fetch('data.json?t=' + Date.now());
 
-                if (!response.ok) throw new Error('Failed to load data');
+                if (!response.ok) {
+                    throw new Error('Failed to load data.json');
+                }
 
                 currentData = await response.json();
                 renderDashboard();
+
             } catch (error) {
-                console.error('Error:', error);
+                console.error('Dashboard load error:', error);
             }
         }
 
         function setMode(mode) {
             currentMode = mode;
-            document.getElementById('btnToday').className = mode === 'today' ? 'btn active' : 'btn';
-            document.getElementById('btnMonth').className = mode === 'month' ? 'btn active' : 'btn';
+
+            document.getElementById('btnToday').className =
+                mode === 'today' ? 'btn active' : 'btn';
+
+            document.getElementById('btnYesterday').className =
+                mode === 'yesterday' ? 'btn active' : 'btn';
+
             renderDashboard();
         }
 
         function renderDashboard() {
             if (!currentData) return;
 
-            document.getElementById('displayDate').textContent = currentData.date;
-            document.getElementById('lastUpdate').textContent = currentData.lastUpdate;
+            document.getElementById('displayDate').textContent =
+                currentData.date || '-';
+
+            document.getElementById('lastUpdate').textContent =
+                currentData.lastUpdate || '-';
 
             const grid = document.getElementById('dashboardGrid');
             grid.innerHTML = '';
 
-            // Select list based on mode
             const list = currentData[currentMode] || [];
 
-            if (list.length === 0) {
-                grid.innerHTML = '<div class="no-data">No sales data available.</div>';
+            if (!list.length) {
+                grid.innerHTML =
+                    '<div class="no-data">No sales data available.</div>';
                 return;
             }
 
-            // List is already sorted by python, but safety sort
-            const sortedOutlets = [...list].sort((a, b) => b.sales - a.sales);
+            const sorted = [...list].sort((a, b) => b.sales - a.sales);
 
-            sortedOutlets.forEach(item => {
+            sorted.forEach(item => {
                 const card = document.createElement('div');
                 card.className = 'card';
 
                 const formattedSales = new Intl.NumberFormat('en-US', {
-                    style: 'decimal',
-                    minimumFractionDigits: 0,
                     maximumFractionDigits: 0
                 }).format(item.sales);
 
@@ -187,20 +213,21 @@
 
                 card.innerHTML = `
                     <div class="outlet-name">${item.outlet}</div>
-                    <div class="sales-amount ${signClass}">${formattedSales}</div>
+                    <div class="sales-amount ${signClass}">
+                        ${formattedSales}
+                    </div>
                 `;
+
                 grid.appendChild(card);
             });
         }
 
-        // Initial load
+        // INIT
         loadData();
 
-        // Refresh every 60 seconds
+        // AUTO REFRESH
         setInterval(loadData, 60000);
     </script>
+
 </body>
-
-
 </html>
-
