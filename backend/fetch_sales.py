@@ -196,5 +196,68 @@ def main():
         process_group(df_yesterday, mapping_df)
     )
 
+    # =========================
+    # GIT PUSH
+    # =========================
+    push_to_github()
+
+def push_to_github():
+    github_token = os.getenv("GITHUB_TOKEN")
+    repo_url = os.getenv("REPO_URL") # Optional: explicit override
+
+    if not github_token:
+        print("⚠️ GITHUB_TOKEN not found. Skipping git push.")
+        return
+
+    # Check if git repo
+    if not os.path.exists(".git"):
+        print("⚠️ Not a git repository. Skipping git push.")
+        return
+
+    try:
+        import subprocess
+
+        # Configure User
+        subprocess.run(["git", "config", "user.email", "render-bot@example.com"], check=True)
+        subprocess.run(["git", "config", "user.name", "Render Bot"], check=True)
+
+        # Add file
+        subprocess.run(["git", "add", "data.json"], check=True)
+
+        # Commit
+        status = subprocess.run(["git", "status", "--porcelain"], capture_output=True, text=True)
+        if "data.json" not in status.stdout:
+            print("✅ No changes in data.json to push.")
+            return
+
+        subprocess.run(["git", "commit", "-m", "Auto-update data.json [skip ci]"], check=True)
+
+        # Push
+        # If REPO_URL is not provided, try to get it from git config
+        if not repo_url:
+            try:
+                result = subprocess.run(["git", "remote", "get-url", "origin"], capture_output=True, text=True, check=True)
+                origin_url = result.stdout.strip()
+                # Remove user/pass if any
+                if "@" in origin_url:
+                    origin_url = origin_url.split("@")[-1]
+                repo_url = origin_url
+            except Exception:
+                print("⚠️ Could not detect origin URL. Please set REPO_URL env var.")
+                return
+
+        # Clean URL (remove https:// or http://)
+        clean_url = repo_url.replace("https://", "").replace("http://", "")
+        
+        # Construct auth URL
+        remote_with_token = f"https://{github_token}@{clean_url}"
+        
+        print(f"🚀 Pushing to {clean_url}...")
+        subprocess.run(["git", "push", remote_with_token, "HEAD:main"], check=True)
+        print("✅ Successfully pushed data.json to GitHub!")
+
+    except Exception as e:
+        print(f"❌ Git push failed: {e}")
+
 if __name__ == "__main__":
     main()
