@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sales Dashboard</title>
+    <title>Executive Sales Dashboard</title>
 
     <style>
         body {
@@ -35,6 +35,30 @@
         .controls {
             margin-top: 20px;
             text-align: center;
+        }
+
+        .total-display {
+            text-align: center;
+            margin: 20px 0;
+            padding: 15px;
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            max-width: 400px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .total-label {
+            font-size: 16px;
+            color: #666;
+            margin-bottom: 5px;
+        }
+
+        .total-value {
+            font-size: 42px;
+            font-weight: 800;
+            color: #f97316;
         }
 
         .grid-container {
@@ -118,7 +142,7 @@
 <body>
 
     <div class="header">
-        <h1>Sales Dashboard</h1>
+        <h1>Executive Sales Dashboard</h1>
 
         <div class="meta-info">
             Date:
@@ -135,6 +159,11 @@
             <button id="btnYesterday" onclick="setMode('yesterday')" class="btn">
                 Yesterday
             </button>
+        </div>
+
+        <div class="total-display">
+            <div class="total-label">Total Sales (<span id="totalModeLabel">Today</span>)</div>
+            <div class="total-value" id="totalValue">-</div>
         </div>
     </div>
 
@@ -188,10 +217,20 @@
             document.getElementById('lastUpdate').textContent =
                 currentData.lastUpdate || '-';
 
+            // Update Total Label
+            const modeLabel = currentMode === 'today' ? 'Today' : 'Yesterday';
+            document.getElementById('totalModeLabel').textContent = modeLabel;
+
             const grid = document.getElementById('dashboardGrid');
             grid.innerHTML = '';
 
             const list = currentData[currentMode] || [];
+
+            // Calculate Total
+            const totalSales = list.reduce((sum, item) => sum + (item.sales || 0), 0);
+            document.getElementById('totalValue').textContent = new Intl.NumberFormat('en-US', {
+                maximumFractionDigits: 0
+            }).format(totalSales);
 
             if (!list.length) {
                 grid.innerHTML =
@@ -230,5 +269,5 @@
     </script>
 
 </body>
-</html>
 
+</html>
