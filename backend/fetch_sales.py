@@ -156,9 +156,13 @@ def process_group(df, mapping_df=None):
 # EXPORT JSON
 # =========================
 def export_json(today_list, yesterday_list):
+    # Adjust time to UTC+3 (or user's local time)
+    # Render uses UTC. User wants +3 hours.
+    now_local = datetime.now(timezone.utc) + timedelta(hours=3)
+
     payload = {
-        "date": datetime.now().strftime("%Y-%m-%d"),
-        "lastUpdate": datetime.now().strftime("%H:%M"),
+        "date": now_local.strftime("%Y-%m-%d"),
+        "lastUpdate": now_local.strftime("%I:%M %p"), # 12-hour format is usually nicer
         "today": today_list,
         "yesterday": yesterday_list
     }
