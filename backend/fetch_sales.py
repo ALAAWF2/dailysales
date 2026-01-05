@@ -97,11 +97,18 @@ def fetch_sales_last_two_days(token):
 # =========================
 # MAPPING
 # =========================
+# =========================
+# MAPPING
+# =========================
 def load_mapping():
-    if not os.path.exists("mapping.xlsx"):
+    # Use absolute path for mapping file
+    mapping_path = os.path.join(BACKEND_DIR, "mapping.xlsx")
+    
+    if not os.path.exists(mapping_path):
+        print(f"⚠️ Mapping file not found at: {mapping_path}")
         return None
 
-    df = pd.read_excel("mapping.xlsx")
+    df = pd.read_excel(mapping_path)
     df.columns = df.columns.str.lower().str.strip()
 
     store_col = next((c for c in df.columns if "store" in c and "number" in c), None)
