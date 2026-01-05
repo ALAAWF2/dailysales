@@ -1,66 +1,66 @@
 {
   "date": "2026-01-05",
-  "lastUpdate": "08:21 PM",
+  "lastUpdate": "08:30 PM",
   "today": [
     {
       "outlet": "08-Makkah Mall",
-      "sales": 28424
+      "sales": 29377
     },
     {
       "outlet": "27-Dhahran Mall khobar",
-      "sales": 22530
+      "sales": 23989
     },
     {
       "outlet": "23-Alia Mall Madinah",
-      "sales": 20923
-    },
-    {
-      "outlet": "04-Andalos Mall",
-      "sales": 16790
+      "sales": 20808
     },
     {
       "outlet": "38-Al_Riyadh Park",
-      "sales": 16557
+      "sales": 17910
+    },
+    {
+      "outlet": "04-Andalos Mall",
+      "sales": 17394
     },
     {
       "outlet": "29-Al Nakheel Mall Riyadh",
       "sales": 14631
     },
     {
-      "outlet": "06-Red Sea Mall",
-      "sales": 14517
+      "outlet": "21-Abha Al_Rashid Mall New",
+      "sales": 14626
     },
     {
-      "outlet": "21-Abha Al_Rashid Mall New",
-      "sales": 14219
+      "outlet": "06-Red Sea Mall",
+      "sales": 14616
     },
     {
       "outlet": "26-Al-Noor Mall Madinah",
       "sales": 13135
     },
     {
-      "outlet": "12-Al_Hamra Mall",
-      "sales": 12551
+      "outlet": "43-Mujan Park",
+      "sales": 12871
     },
     {
-      "outlet": "43-Mujan Park",
-      "sales": 12395
+      "outlet": "12-Al_Hamra Mall",
+      "sales": 12699
     },
     {
       "outlet": "54-THE VILLAGE",
-      "sales": 11607
+      "sales": 11784
     },
     {
       "outlet": "16-Ehsa Othaim Mall",
-      "sales": 11480
+      "sales": 10703
+    },
+    {
+      "outlet": "28-Al Nakheel Mall Dammam",
+      "sales": 10685
     },
     {
       "outlet": "36-Al jubail Mall",
       "sales": 10493
-    },
-    {
-      "outlet": "28-Al Nakheel Mall Dammam",
-      "sales": 10092
     },
     {
       "outlet": "19-Hail Othaim Mall",
@@ -68,7 +68,11 @@
     },
     {
       "outlet": "55- Jabl Omar",
-      "sales": 9089
+      "sales": 9158
+    },
+    {
+      "outlet": "13-Al-Yasmin Mall",
+      "sales": 8943
     },
     {
       "outlet": "56- Aziz Mall 2",
@@ -76,35 +80,31 @@
     },
     {
       "outlet": "48 - Jeddah Park",
-      "sales": 8815
-    },
-    {
-      "outlet": "13-Al-Yasmin Mall",
-      "sales": 8550
-    },
-    {
-      "outlet": "07-Arab Mall",
-      "sales": 8513
+      "sales": 8884
     },
     {
       "outlet": "50-Meem Plaza Riyadh",
-      "sales": 8199
+      "sales": 8641
+    },
+    {
+      "outlet": "07-Arab Mall",
+      "sales": 8522
     },
     {
       "outlet": "22-Tabuk Park",
       "sales": 8071
     },
     {
-      "outlet": "42-Dareen Mall Dammam",
-      "sales": 7868
+      "outlet": "51-Park Avenue Riyadh",
+      "sales": 8065
     },
     {
-      "outlet": "51-Park Avenue Riyadh",
-      "sales": 7742
+      "outlet": "42-Dareen Mall Dammam",
+      "sales": 7942
     },
     {
       "outlet": "57-Sauq7",
-      "sales": 7480
+      "sales": 7618
     },
     {
       "outlet": "49-AlAhsa Mall",
@@ -124,27 +124,27 @@
     },
     {
       "outlet": "09-Al-Salam Mall",
-      "sales": 6050
+      "sales": 6357
+    },
+    {
+      "outlet": "11-Jouri Mall",
+      "sales": 6352
     },
     {
       "outlet": "46-Khaleej Mall Riyadh",
-      "sales": 5785
+      "sales": 6043
+    },
+    {
+      "outlet": "14-Al Kamal Mall",
+      "sales": 5901
     },
     {
       "outlet": "32-Atyaf Mall Riyadh",
       "sales": 5723
     },
     {
-      "outlet": "11-Jouri Mall",
-      "sales": 5503
-    },
-    {
-      "outlet": "14-Al Kamal Mall",
-      "sales": 5053
-    },
-    {
       "outlet": "30-Tala Mall Riyadh",
-      "sales": 4891
+      "sales": 5128
     },
     {
       "outlet": "15-Riyadh Othaim Mall",
@@ -152,7 +152,7 @@
     },
     {
       "outlet": "05-Haifa Mall",
-      "sales": 3906
+      "sales": 3963
     },
     {
       "outlet": "24-Yanbu Dana Mall",
@@ -160,15 +160,15 @@
     },
     {
       "outlet": "47-Al-Nakheel Plaza",
-      "sales": 3073
+      "sales": 3172
     },
     {
       "outlet": "40-Hayat Mall Riyad",
-      "sales": 2942
+      "sales": 3100
     },
     {
       "outlet": "18-Al_Khayyat Center",
-      "sales": 2417
+      "sales": 3050
     },
     {
       "outlet": "52-Al_Baha Mall",
@@ -176,7 +176,11 @@
     },
     {
       "outlet": "25-Rabwa Othaim Mall",
-      "sales": 1500
+      "sales": 1539
+    },
+    {
+      "outlet": "53-Al Basateen Mall",
+      "sales": 947
     },
     {
       "outlet": "17-Arar Othaim Mall",
@@ -185,10 +189,6 @@
     {
       "outlet": "44-Al-Jouf Center",
       "sales": 448
-    },
-    {
-      "outlet": "53-Al Basateen Mall",
-      "sales": 319
     }
   ],
   "yesterday": [
