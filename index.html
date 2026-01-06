@@ -35,18 +35,37 @@
         .controls {
             margin-top: 20px;
             text-align: center;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            align-items: center;
+        }
+        
+        .filters-row {
+            margin-top: 15px;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        select {
+            padding: 8px 16px;
+            border-radius: 20px;
+            border: 1px solid #ddd;
+            font-size: 14px;
+            background-color: white;
+            cursor: pointer;
         }
 
         .total-display {
             text-align: center;
-            margin: 20px 0;
+            margin: 20px auto;
             padding: 15px;
             background: #fff;
             border-radius: 12px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
             max-width: 400px;
-            margin-left: auto;
-            margin-right: auto;
         }
 
         .total-label {
@@ -79,6 +98,7 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
+            position: relative;
 
             /* ORANGE ACCENT */
             border-left: 5px solid #f97316;
@@ -94,6 +114,15 @@
             color: #555;
             margin-bottom: 10px;
             text-align: center;
+            font-weight: 600;
+        }
+        
+        .meta-tags {
+            font-size: 12px;
+            color: #999;
+            margin-bottom: 8px;
+            display: flex;
+            gap: 8px;
         }
 
         .sales-amount {
@@ -109,6 +138,34 @@
 
         .sales-amount.negative {
             color: #dc2626;
+        }
+
+        /* TARGET PROGRESS BAR */
+        .target-container {
+            width: 100%;
+            margin-top: 15px;
+        }
+        
+        .progress-bar-bg {
+            background-color: #e5e7eb;
+            height: 8px;
+            border-radius: 4px;
+            width: 100%;
+            overflow: hidden;
+        }
+        
+        .progress-bar-fill {
+            height: 100%;
+            border-radius: 4px;
+            transition: width 0.5s ease;
+        }
+        
+        .target-text {
+            display: flex;
+            justify-content: space-between;
+            font-size: 12px;
+            color: #666;
+            margin-top: 4px;
         }
 
         .no-data {
@@ -153,12 +210,29 @@
         </div>
 
         <div class="controls">
-            <button id="btnToday" onclick="setMode('today')" class="btn active">
-                Today
-            </button>
-            <button id="btnYesterday" onclick="setMode('yesterday')" class="btn">
-                Yesterday
-            </button>
+            <!-- Mode Buttons -->
+            <div>
+                <button id="btnToday" onclick="setMode('today')" class="btn active">
+                    Today
+                </button>
+                <button id="btnYesterday" onclick="setMode('yesterday')" class="btn">
+                    Yesterday
+                </button>
+                <button id="btnMtd" onclick="setMode('mtd')" class="btn">
+                    Month to Date
+                </button>
+            </div>
+        </div>
+        
+        <!-- Filters -->
+        <div class="filters-row">
+            <select id="filterCity" onchange="renderDashboard()">
+                <option value="all">All Cities</option>
+            </select>
+            
+            <select id="filterArea" onchange="renderDashboard()">
+                <option value="all">All Areas</option>
+            </select>
         </div>
 
         <div class="total-display">
@@ -173,15 +247,11 @@
 
     <script>
         let currentData = null;
-        let currentMode = 'today'; // today | yesterday
+        let currentMode = 'today'; // today | yesterday | mtd
 
         async function loadData() {
             try {
-                /**
-                 * IMPORTANT:
-                 * data.json موجود في نفس الريبو
-                 * GitHub Pages
-                 */
+                // Prevent cache
                 const response = await fetch('data.json?t=' + Date.now());
 
                 if (!response.ok) {
@@ -189,11 +259,48 @@
                 }
 
                 currentData = await response.json();
+                
+                // Populate Filters
+                if(currentData.metadata) {
+                    populateFilters(currentData.metadata.cities, currentData.metadata.areas);
+                }
+                
                 renderDashboard();
 
             } catch (error) {
                 console.error('Dashboard load error:', error);
             }
+        }
+        
+        function populateFilters(cities, areas) {
+            const citySelect = document.getElementById('filterCity');
+            const areaSelect = document.getElementById('filterArea');
+            
+            // Save current selection if re-populating
+            const currentCity = citySelect.value;
+            const currentArea = areaSelect.value;
+            
+            // Clear except first option
+            while(citySelect.options.length > 1) citySelect.remove(1);
+            while(areaSelect.options.length > 1) areaSelect.remove(1);
+            
+            cities.forEach(c => {
+                const opt = document.createElement('option');
+                opt.value = c;
+                opt.textContent = c;
+                citySelect.appendChild(opt);
+            });
+            
+            areas.forEach(a => {
+                const opt = document.createElement('option');
+                opt.value = a;
+                opt.textContent = a;
+                areaSelect.appendChild(opt);
+            });
+            
+            // Restore selection if still valid, else 'all'
+            citySelect.value = cities.includes(currentCity) ? currentCity : 'all';
+            areaSelect.value = areas.includes(currentArea) ? currentArea : 'all';
         }
 
         function setMode(mode) {
@@ -204,6 +311,9 @@
 
             document.getElementById('btnYesterday').className =
                 mode === 'yesterday' ? 'btn active' : 'btn';
+
+            document.getElementById('btnMtd').className =
+                mode === 'mtd' ? 'btn active' : 'btn';
 
             renderDashboard();
         }
@@ -218,13 +328,28 @@
                 currentData.lastUpdate || '-';
 
             // Update Total Label
-            const modeLabel = currentMode === 'today' ? 'Today' : 'Yesterday';
+            let modeLabel = 'Today';
+            if(currentMode === 'yesterday') modeLabel = 'Yesterday';
+            if(currentMode === 'mtd') modeLabel = 'Month to Date';
+            
             document.getElementById('totalModeLabel').textContent = modeLabel;
 
             const grid = document.getElementById('dashboardGrid');
             grid.innerHTML = '';
-
-            const list = currentData[currentMode] || [];
+            
+            // Get raw list for mode
+            let list = currentData[currentMode] || [];
+            
+            // Apply Filters using optional chaining and default "Unknown" logic from backend
+            const selectedCity = document.getElementById('filterCity').value;
+            const selectedArea = document.getElementById('filterArea').value;
+            
+            if (selectedCity !== 'all') {
+                list = list.filter(item => item.city === selectedCity);
+            }
+            if (selectedArea !== 'all') {
+                list = list.filter(item => item.area === selectedArea);
+            }
 
             // Calculate Total
             const totalSales = list.reduce((sum, item) => sum + (item.sales || 0), 0);
@@ -234,7 +359,7 @@
 
             if (!list.length) {
                 grid.innerHTML =
-                    '<div class="no-data">No sales data available.</div>';
+                    '<div class="no-data">No sales data available for current selection.</div>';
                 return;
             }
 
@@ -249,12 +374,41 @@
                 }).format(item.sales);
 
                 const signClass = item.sales >= 0 ? 'positive' : 'negative';
+                
+                let targetHtml = '';
+                if(currentMode === 'mtd') {
+                    const target = item.target || 0;
+                    // Prevent division by zero
+                    const pct = target > 0 ? Math.min((item.sales / target) * 100, 100) : 0; 
+                    const pctDisplay = target > 0 ? Math.round((item.sales / target) * 100) : 0;
+                    
+                    // Color logic
+                    let color = '#ef4444'; // Red < 50
+                    if(pctDisplay >= 80) color = '#22c55e'; // Green >= 80
+                    else if(pctDisplay >= 50) color = '#f97316'; // Orange 50-79
+                    
+                    const formattedTarget = new Intl.NumberFormat('en-US', { maximumFractionDigits:0 }).format(target);
+                    
+                    targetHtml = `
+                    <div class="target-container">
+                        <div class="progress-bar-bg">
+                            <div class="progress-bar-fill" style="width: ${pct}%; background-color: ${color};"></div>
+                        </div>
+                        <div class="target-text">
+                            <span>Goal: ${formattedTarget}</span>
+                            <span>${pctDisplay}%</span>
+                        </div>
+                    </div>
+                    `;
+                }
 
                 card.innerHTML = `
                     <div class="outlet-name">${item.outlet}</div>
+                    ${ currentMode !== 'today' ? `<div class="meta-tags">${item.city || ''} | ${item.area || ''}</div>` : '' }
                     <div class="sales-amount ${signClass}">
                         ${formattedSales}
                     </div>
+                    ${targetHtml}
                 `;
 
                 grid.appendChild(card);

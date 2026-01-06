@@ -98,6 +98,45 @@ def fetch_sales_last_two_days(token):
 # MAPPING
 # =========================
 # =========================
+# FETCH MTD (Month to Date)
+# =========================
+def fetch_sales_mtd_range(token):
+    headers = {
+        "Authorization": f"Bearer {token}",
+        "Accept": "application/json",
+        "Prefer": "odata.maxpagesize=5000"
+    }
+
+    now_utc = datetime.now(timezone.utc)
+    # Start of current month
+    month_start = now_utc.replace(day=1, hour=0, minute=0, second=0, microsecond=0)
+    # End of "today" (so we get everything up to now)
+    tomorrow_start = (now_utc + timedelta(days=1)).replace(hour=0, minute=0, second=0, microsecond=0)
+
+    start_str = month_start.strftime("%Y-%m-%dT%H:%M:%SZ")
+    end_str = tomorrow_start.strftime("%Y-%m-%dT%H:%M:%SZ")
+
+    print(f"📅 Fetching MTD data from {start_str} to {end_str}...")
+
+    query_url = (
+        f"{BASE_URL}"
+        f"?$filter=PaymentAmount ne 0 "
+        f"and TransactionDate ge {start_str} "
+        f"and TransactionDate lt {end_str}"
+        f"&$select=OperatingUnitNumber,PaymentAmount,TransactionDate"
+    )
+
+    rows = []
+    while query_url:
+        r = requests.get(query_url, headers=headers, timeout=TIMEOUT)
+        r.raise_for_status()
+        data = r.json()
+        rows.extend(data.get("value", []))
+        query_url = data.get("@odata.nextLink")
+
+    return pd.DataFrame(rows)
+
+# =========================
 # MAPPING
 # =========================
 def load_mapping():
@@ -109,23 +148,41 @@ def load_mapping():
         return None
 
     df = pd.read_excel(mapping_path)
+    # Normalize headers
     df.columns = df.columns.str.lower().str.strip()
 
     store_col = next((c for c in df.columns if "store" in c and "number" in c), None)
     name_col = next((c for c in df.columns if "outlet" in c or "name" in c), None)
+    
+    # New columns
+    target_col = next((c for c in df.columns if "target" in c), None)
+    city_col = next((c for c in df.columns if "city" in c), None)
+    area_col = next((c for c in df.columns if "area" in c), None)
 
     if not store_col or not name_col:
+        print("❌ Critical columns (store, name) missing in mapping.")
         return None
 
+    # Rename for consistency
+    rename_map = {store_col: "store_id", name_col: "store_name"}
+    
+    if target_col: rename_map[target_col] = "target"
+    if city_col: rename_map[city_col] = "city"
+    if area_col: rename_map[area_col] = "area"
+
     df[store_col] = df[store_col].astype(str).str.strip()
-    return df[[store_col, name_col]].rename(
-        columns={store_col: "store_id", name_col: "store_name"}
-    )
+    
+    final_cols = ["store_id", "store_name"]
+    if target_col: final_cols.append("target")
+    if city_col: final_cols.append("city")
+    if area_col: final_cols.append("area")
+
+    return df[list(rename_map.keys())].rename(columns=rename_map)
 
 # =========================
 # TRANSFORM
 # =========================
-def process_group(df, mapping_df=None):
+def process_group(df, mapping_df=None, is_mtd=False):
     if df.empty:
         return []
 
@@ -142,147 +199,127 @@ def process_group(df, mapping_df=None):
             mapping_df, left_on="store", right_on="store_id", how="left"
         )
         grouped["outlet"] = grouped["store_name"].fillna(grouped["store"])
+        
+        # Add metadata for filters
+        if "city" in grouped.columns:
+            grouped["city"] = grouped["city"].fillna("Unknown")
+        if "area" in grouped.columns:
+            grouped["area"] = grouped["area"].fillna("Unknown")
+        if "target" in grouped.columns:
+            grouped["target"] = pd.to_numeric(grouped["target"], errors="coerce").fillna(0)
     else:
         grouped["outlet"] = grouped["store"]
+        grouped["city"] = "Unknown"
+        grouped["area"] = "Unknown"
+        grouped["target"] = 0
 
     grouped = grouped.sort_values("sales", ascending=False)
 
-    return [
-        {"outlet": r["outlet"], "sales": int(r["sales"])}
-        for _, r in grouped.iterrows()
-    ]
+    results = []
+    for _, r in grouped.iterrows():
+        item = {
+            "outlet": r["outlet"],
+            "sales": int(r["sales"]),
+            "city": r.get("city", "Unknown"),
+            "area": r.get("area", "Unknown")
+        }
+        if is_mtd:
+             item["target"] = int(r.get("target", 0))
+        
+        results.append(item)
+        
+    return results
 
 # =========================
 # EXPORT JSON
 # =========================
-def export_json(today_list, yesterday_list):
+def export_json(today_list, yesterday_list, mtd_list, cities, areas):
     # Adjust time to UTC+3 (or user's local time)
-    # Render uses UTC. User wants +3 hours.
     now_local = datetime.now(timezone.utc) + timedelta(hours=3)
 
     payload = {
         "date": now_local.strftime("%Y-%m-%d"),
-        "lastUpdate": now_local.strftime("%I:%M %p"), # 12-hour format is usually nicer
+        "lastUpdate": now_local.strftime("%I:%M %p"),
         "today": today_list,
-        "yesterday": yesterday_list
+        "yesterday": yesterday_list,
+        "mtd": mtd_list,
+        "metadata": {
+            "cities": sorted(list(cities)),
+            "areas": sorted(list(areas))
+        }
     }
 
     with open(OUTPUT_JSON, "w", encoding="utf-8") as f:
         json.dump(payload, f, ensure_ascii=False, indent=2)
 
-    # نجبر GitHub Pages يعيد deploy
+    # Force GitHub Pages update simulation (local timestamp update)
     if os.path.exists(INDEX_HTML):
         os.utime(INDEX_HTML, None)
 
-    print("✅ data.json updated (Today & Yesterday)")
+    print("✅ data.json updated (Today, Yesterday & MTD)")
 
 # =========================
 # MAIN
 # =========================
 def main():
-    print("🚀 Fetching Today & Yesterday sales...")
+    print("🚀 Fetching Sales Data...")
 
     token = get_access_token()
     if not token:
         return
 
-    df = fetch_sales_last_two_days(token)
-    if df.empty:
-        export_json([], [])
+    # 1. Fetch MTD Range (includes today and yesterday)
+    # Optimization: We can just fetch MTD once and filter in memory for Today/Yesterday
+    # to avoid multiple API calls if volume permits. 
+    # But sticking to separate calls or splitting the huge dataframe?
+    # Actually, fetching MTD (1st - Now) covers everything. Let's do that to be efficient.
+    
+    df_all = fetch_sales_mtd_range(token)
+    
+    if df_all.empty:
+        export_json([], [], [], [], [])
         return
 
-    df["TransactionDate"] = pd.to_datetime(df["TransactionDate"])
-
+    df_all["TransactionDate"] = pd.to_datetime(df_all["TransactionDate"])
+    
+    # Time Ranges
     now_utc = datetime.now(timezone.utc)
     today_start = now_utc.replace(hour=0, minute=0, second=0, microsecond=0)
     yesterday_start = today_start - timedelta(days=1)
 
-    df_today = df[df["TransactionDate"] >= today_start]
-    df_yesterday = df[
-        (df["TransactionDate"] >= yesterday_start) &
-        (df["TransactionDate"] < today_start)
+    # Filter
+    df_today = df_all[df_all["TransactionDate"] >= today_start]
+    df_yesterday = df_all[
+        (df_all["TransactionDate"] >= yesterday_start) &
+        (df_all["TransactionDate"] < today_start)
     ]
+    # df_mtd is just df_all (assuming we fetched from 1st of month)
 
     mapping_df = load_mapping()
 
-    export_json(
-        process_group(df_today, mapping_df),
-        process_group(df_yesterday, mapping_df)
-    )
+    today_data = process_group(df_today, mapping_df, is_mtd=False)
+    yesterday_data = process_group(df_yesterday, mapping_df, is_mtd=False)
+    mtd_data = process_group(df_all, mapping_df, is_mtd=True)
+
+    # Extract unique cities and areas for frontend filters
+    cities = set()
+    areas = set()
+    if mapping_df is not None:
+        if "city" in mapping_df.columns:
+            cities = set(mapping_df["city"].dropna().unique())
+        if "area" in mapping_df.columns:
+            areas = set(mapping_df["area"].dropna().unique())
+
+    export_json(today_data, yesterday_data, mtd_data, cities, areas)
 
     # =========================
     # GIT PUSH
     # =========================
+    # print("🔒 Git push disabled for verification.")
     push_to_github()
 
-def push_to_github():
-    github_token = os.getenv("GITHUB_TOKEN")
-    repo_url = os.getenv("REPO_URL") # Optional: explicit override
-
-    if not github_token:
-        print("⚠️ GITHUB_TOKEN not found. Skipping git push.")
-        return
-
-    # Check if git repo
-    if not os.path.exists(".git"):
-        print("⚠️ Not a git repository. Skipping git push.")
-        return
-
-    try:
-        import subprocess
-
-        # Configure User
-        subprocess.run(["git", "config", "user.email", "render-bot@example.com"], check=True)
-        subprocess.run(["git", "config", "user.name", "Render Bot"], check=True)
-
-        # Add file
-        subprocess.run(["git", "add", OUTPUT_JSON], check=True)
-
-        # Commit
-        status = subprocess.run(["git", "status", "--porcelain"], capture_output=True, text=True)
-        if "data.json" not in status.stdout:
-            print("✅ No changes in data.json to push.")
-            return
-
-        subprocess.run(["git", "commit", "-m", "Auto-update data.json [skip ci]"], check=True)
-
-        # Push
-        # If REPO_URL is not provided, try to get it from git config
-        if not repo_url:
-            try:
-                result = subprocess.run(["git", "remote", "get-url", "origin"], capture_output=True, text=True, check=True)
-                origin_url = result.stdout.strip()
-                # Remove user/pass if any
-                if "@" in origin_url:
-                    origin_url = origin_url.split("@")[-1]
-                repo_url = origin_url
-            except Exception:
-                print("⚠️ Could not detect origin URL. Please set REPO_URL env var.")
-                return
-
-        # Clean URL (remove https:// or http://)
-        clean_url = repo_url.replace("https://", "").replace("http://", "")
-        
-        # Construct auth URL
-        remote_with_token = f"https://{github_token}@{clean_url}"
-        
-        # PULL BEFORE PUSH to avoid conflicts
-        print("⬇️ Pulling latest changes...")
-        try:
-            subprocess.run(["git", "pull", remote_with_token, "main"], check=True)
-        except subprocess.CalledProcessError as e:
-            print(f"⚠️ Git pull failed: {e}. Attempting logic to resolve conflict if it's just data.json...")
-            # If conflict is on data.json, we prioritize OUR version (the one we just generated)
-            subprocess.run(["git", "checkout", "--ours", OUTPUT_JSON], check=False)
-            subprocess.run(["git", "add", OUTPUT_JSON], check=False)
-            subprocess.run(["git", "commit", "-m", "Merge conflict in data.json"], check=False)
-
-        print(f"🚀 Pushing to {clean_url}...")
-        subprocess.run(["git", "push", remote_with_token, "HEAD:main"], check=True)
-        print("✅ Successfully pushed data.json to GitHub!")
-
-    except Exception as e:
-        print(f"❌ Git push failed: {e}")
+if __name__ == "__main__":
+    main()
 
 if __name__ == "__main__":
     main()
