@@ -266,6 +266,17 @@ def push_to_github():
         # Construct auth URL
         remote_with_token = f"https://{github_token}@{clean_url}"
         
+        # PULL BEFORE PUSH to avoid conflicts
+        print("⬇️ Pulling latest changes...")
+        try:
+            subprocess.run(["git", "pull", remote_with_token, "main"], check=True)
+        except subprocess.CalledProcessError as e:
+            print(f"⚠️ Git pull failed: {e}. Attempting logic to resolve conflict if it's just data.json...")
+            # If conflict is on data.json, we prioritize OUR version (the one we just generated)
+            subprocess.run(["git", "checkout", "--ours", OUTPUT_JSON], check=False)
+            subprocess.run(["git", "add", OUTPUT_JSON], check=False)
+            subprocess.run(["git", "commit", "-m", "Merge conflict in data.json"], check=False)
+
         print(f"🚀 Pushing to {clean_url}...")
         subprocess.run(["git", "push", remote_with_token, "HEAD:main"], check=True)
         print("✅ Successfully pushed data.json to GitHub!")
