@@ -1,10 +1,14 @@
 {
   "date": "2026-01-06",
-  "lastUpdate": "10:16 AM",
+  "lastUpdate": "10:31 AM",
   "today": [
     {
       "outlet": "30-Tala Mall Riyadh",
       "sales": 2206
+    },
+    {
+      "outlet": "08-Makkah Mall",
+      "sales": 1189
     },
     {
       "outlet": "23-Alia Mall Madinah",
@@ -19,12 +23,12 @@
       "sales": 736
     },
     {
-      "outlet": "08-Makkah Mall",
-      "sales": 614
+      "outlet": "04-Andalos Mall",
+      "sales": 684
     },
     {
-      "outlet": "04-Andalos Mall",
-      "sales": 399
+      "outlet": "05-Haifa Mall",
+      "sales": 298
     },
     {
       "outlet": "42-Dareen Mall Dammam",
@@ -39,6 +43,10 @@
       "sales": 255
     },
     {
+      "outlet": "52-Al_Baha Mall",
+      "sales": 201
+    },
+    {
       "outlet": "18-Al_Khayyat Center",
       "sales": 179
     },
@@ -51,8 +59,20 @@
       "sales": 124
     },
     {
+      "outlet": "14-Al Kamal Mall",
+      "sales": 99
+    },
+    {
+      "outlet": "09-Al-Salam Mall",
+      "sales": 99
+    },
+    {
       "outlet": "21-Abha Al_Rashid Mall New",
       "sales": 99
+    },
+    {
+      "outlet": "46-Khaleej Mall Riyadh",
+      "sales": 88
     },
     {
       "outlet": "48 - Jeddah Park",
@@ -71,16 +91,12 @@
       "sales": 69
     },
     {
-      "outlet": "15-Riyadh Othaim Mall",
-      "sales": 59
-    },
-    {
       "outlet": "55- Jabl Omar",
       "sales": 59
     },
     {
-      "outlet": "46-Khaleej Mall Riyadh",
-      "sales": 49
+      "outlet": "15-Riyadh Othaim Mall",
+      "sales": 59
     },
     {
       "outlet": "29-Al Nakheel Mall Riyadh",
