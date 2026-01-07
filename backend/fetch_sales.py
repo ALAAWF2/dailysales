@@ -356,8 +356,15 @@ def push_to_github():
              
         remote_with_token = f"https://{github_token}@{clean_url}"
 
-        # Update remote to use token
-        subprocess.run(["git", "remote", "set-url", "origin", remote_with_token], check=True)
+        # Configure remote URL safely
+        existing_remotes = subprocess.run(["git", "remote"], capture_output=True, text=True).stdout.splitlines()
+        
+        if "origin" in existing_remotes:
+            # Update existing remote
+            subprocess.run(["git", "remote", "set-url", "origin", remote_with_token], check=True)
+        else:
+            # Add new remote if missing
+            subprocess.run(["git", "remote", "add", "origin", remote_with_token], check=True)
 
         print("🔄 Syncing with remote (Robust Mode)...")
         # 1. Fetch latest state
