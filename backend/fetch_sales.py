@@ -377,7 +377,7 @@ def push_to_github():
 
         # 3. Force switch to main branch and reset to match remote exactly
         #    (This fixes 'detached HEAD' and 'divergent branch' issues)
-        subprocess.run(["git", "checkout", "-B", "main", "origin/main"], check=True)
+      #  subprocess.run(["git", "checkout", "-B", "main", "origin/main"], check=True)
 
         # 4. Write data.json back to disk
         with open(OUTPUT_JSON, 'w', encoding='utf-8') as f:
