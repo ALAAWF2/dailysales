@@ -338,24 +338,11 @@ def push_to_github():
         subprocess.run(["git", "config", "user.email", "render-bot@example.com"], check=True)
         subprocess.run(["git", "config", "user.name", "Render Bot"], check=True)
 
-        # Add file
-        subprocess.run(["git", "add", OUTPUT_JSON], check=True)
-
-        # Commit
-        status = subprocess.run(["git", "status", "--porcelain"], capture_output=True, text=True)
-        if "data.json" not in status.stdout:
-            print("✅ No changes in data.json to push.")
-            return
-
-        subprocess.run(["git", "commit", "-m", "Auto-update data.json [skip ci]"], check=True)
-
-        # Push
-        # If REPO_URL is not provided, try to get it from git config
+        # Ensure we have the URL
         if not repo_url:
             try:
                 result = subprocess.run(["git", "remote", "get-url", "origin"], capture_output=True, text=True, check=True)
                 origin_url = result.stdout.strip()
-                # Remove user/pass if any
                 if "@" in origin_url:
                     origin_url = origin_url.split("@")[-1]
                 repo_url = origin_url
@@ -363,25 +350,48 @@ def push_to_github():
                 print("⚠️ Could not detect origin URL. Please set REPO_URL env var.")
                 return
 
-        # Clean URL (remove https:// or http://)
         clean_url = repo_url.replace("https://", "").replace("http://", "")
-        
-        # Construct auth URL
+        if "@" in clean_url:
+             clean_url = clean_url.split("@")[-1]
+             
         remote_with_token = f"https://{github_token}@{clean_url}"
+
+        # Update remote to use token
+        subprocess.run(["git", "remote", "set-url", "origin", remote_with_token], check=True)
+
+        print("🔄 Syncing with remote (Robust Mode)...")
+        # 1. Fetch latest state
+        subprocess.run(["git", "fetch", "origin", "main"], check=True)
+
+        # 2. Read the FRESH data.json we just generated into memory
+        #    (So we can restore it after resetting git state)
+        with open(OUTPUT_JSON, 'r', encoding='utf-8') as f:
+            new_data_content = f.read()
+
+        # 3. Force switch to main branch and reset to match remote exactly
+        #    (This fixes 'detached HEAD' and 'divergent branch' issues)
+        subprocess.run(["git", "checkout", "-B", "main", "origin/main"], check=True)
+
+        # 4. Write data.json back to disk
+        with open(OUTPUT_JSON, 'w', encoding='utf-8') as f:
+            f.write(new_data_content)
         
-        # PULL BEFORE PUSH to avoid conflicts
-        print("⬇️ Pulling latest changes...")
-        try:
-            subprocess.run(["git", "pull", remote_with_token, "main"], check=True)
-        except subprocess.CalledProcessError as e:
-            print(f"⚠️ Git pull failed: {e}. Attempting logic to resolve conflict if it's just data.json...")
-            # If conflict is on data.json, we prioritize OUR version (the one we just generated)
-            subprocess.run(["git", "checkout", "--ours", OUTPUT_JSON], check=False)
-            subprocess.run(["git", "add", OUTPUT_JSON], check=False)
-            subprocess.run(["git", "commit", "-m", "Merge conflict in data.json"], check=False)
+        # Force timestamp update for GitHub Pages trigger if needed
+        if os.path.exists(INDEX_HTML):
+             os.utime(INDEX_HTML, None)
+
+        # 5. Add, Commit, Push
+        subprocess.run(["git", "add", OUTPUT_JSON], check=True)
+
+        status = subprocess.run(["git", "status", "--porcelain"], capture_output=True, text=True)
+        if "data.json" not in status.stdout:
+            print("✅ No changes in data.json to push.")
+            return
+
+        subprocess.run(["git", "commit", "-m", "Auto-update data.json [skip ci]"], check=True)
 
         print(f"🚀 Pushing to {clean_url}...")
-        subprocess.run(["git", "push", remote_with_token, "HEAD:main"], check=True)
+        subprocess.run(["git", "push", "origin", "main"], check=True)
         print("✅ Successfully pushed data.json to GitHub!")
 
     except Exception as e:
