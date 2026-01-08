@@ -1,28 +1,28 @@
 {
   "date": "2026-01-08",
-  "lastUpdate": "02:47 PM",
+  "lastUpdate": "03:02 PM",
   "today": [
     {
       "outlet": "27-Dhahran Mall khobar",
-      "sales": 13923,
+      "sales": 14459,
       "city": "المنطقة الشرقية",
       "area": "جهاد ايوبي"
     },
     {
       "outlet": "29-Al Nakheel Mall Riyadh",
-      "sales": 10426,
+      "sales": 11481,
       "city": "الرياض",
       "area": "محمدكلو"
     },
     {
-      "outlet": "54-THE VILLAGE",
-      "sales": 8863,
+      "outlet": "06-Red Sea Mall",
+      "sales": 10478,
       "city": "جدة",
       "area": "المنطقة الغربية"
     },
     {
-      "outlet": "06-Red Sea Mall",
-      "sales": 8426,
+      "outlet": "54-THE VILLAGE",
+      "sales": 8863,
       "city": "جدة",
       "area": "المنطقة الغربية"
     },
@@ -46,9 +46,15 @@
     },
     {
       "outlet": "07-Arab Mall",
-      "sales": 5028,
+      "sales": 5405,
       "city": "جدة",
       "area": "شريفة العمري"
+    },
+    {
+      "outlet": "21-Abha Al_Rashid Mall New",
+      "sales": 4808,
+      "city": "ابها",
+      "area": "اماني عسيري"
     },
     {
       "outlet": "24-Yanbu Dana Mall",
@@ -63,16 +69,34 @@
       "area": "عبيدة السباعي"
     },
     {
+      "outlet": "16-Ehsa Othaim Mall",
+      "sales": 3772,
+      "city": "الاحساء",
+      "area": "جهاد ايوبي"
+    },
+    {
       "outlet": "40-Hayat Mall Riyad",
       "sales": 3748,
       "city": "الرياض",
       "area": "عبدالله السرداح"
     },
     {
-      "outlet": "21-Abha Al_Rashid Mall New",
-      "sales": 3393,
-      "city": "ابها",
-      "area": "اماني عسيري"
+      "outlet": "09-Al-Salam Mall",
+      "sales": 3733,
+      "city": "جدة",
+      "area": "عبيدة السباعي"
+    },
+    {
+      "outlet": "51-Park Avenue Riyadh",
+      "sales": 3598,
+      "city": "الرياض",
+      "area": "محمدكلو"
+    },
+    {
+      "outlet": "04-Andalos Mall",
+      "sales": 3459,
+      "city": "جدة",
+      "area": "عبيدة السباعي"
     },
     {
       "outlet": "28-Al Nakheel Mall Dammam",
@@ -81,28 +105,10 @@
       "area": "جهاد ايوبي"
     },
     {
-      "outlet": "04-Andalos Mall",
-      "sales": 3330,
-      "city": "جدة",
-      "area": "عبيدة السباعي"
-    },
-    {
       "outlet": "22-Tabuk Park",
       "sales": 3063,
       "city": "تبوك",
       "area": "خليل الصانع"
-    },
-    {
-      "outlet": "16-Ehsa Othaim Mall",
-      "sales": 3060,
-      "city": "الاحساء",
-      "area": "جهاد ايوبي"
-    },
-    {
-      "outlet": "09-Al-Salam Mall",
-      "sales": 3000,
-      "city": "جدة",
-      "area": "عبيدة السباعي"
     },
     {
       "outlet": "43-Mujan Park",
@@ -112,37 +118,31 @@
     },
     {
       "outlet": "26-Al-Noor Mall Madinah",
-      "sales": 2837,
+      "sales": 2875,
       "city": "المدينة",
       "area": "خليل الصانع"
     },
     {
       "outlet": "42-Dareen Mall Dammam",
-      "sales": 2699,
+      "sales": 2798,
       "city": "المنطقة الشرقية",
       "area": "جهاد ايوبي"
     },
     {
-      "outlet": "55- Jabl Omar",
-      "sales": 2467,
-      "city": "مكة",
-      "area": "رضوان عطيوي"
-    },
-    {
       "outlet": "48 - Jeddah Park",
-      "sales": 2430,
+      "sales": 2796,
       "city": "جدة",
       "area": "شريفة العمري"
     },
     {
-      "outlet": "51-Park Avenue Riyadh",
-      "sales": 2425,
-      "city": "الرياض",
-      "area": "محمدكلو"
+      "outlet": "55- Jabl Omar",
+      "sales": 2634,
+      "city": "مكة",
+      "area": "رضوان عطيوي"
     },
     {
       "outlet": "38-Al_Riyadh Park",
-      "sales": 2297,
+      "sales": 2394,
       "city": "الرياض",
       "area": "محمدكلو"
     },
@@ -159,34 +159,34 @@
       "area": "محمدكلو"
     },
     {
+      "outlet": "46-Khaleej Mall Riyadh",
+      "sales": 1987,
+      "city": "الرياض",
+      "area": "محمدكلو"
+    },
+    {
       "outlet": "47-Al-Nakheel Plaza",
       "sales": 1981,
       "city": "القصيم",
       "area": "عبدالله السرداح"
     },
     {
-      "outlet": "46-Khaleej Mall Riyadh",
-      "sales": 1948,
-      "city": "الرياض",
-      "area": "محمدكلو"
-    },
-    {
       "outlet": "19-Hail Othaim Mall",
-      "sales": 1725,
+      "sales": 1903,
       "city": "حائل",
       "area": "عبدالله السرداح"
     },
     {
-      "outlet": "05-Haifa Mall",
-      "sales": 1633,
-      "city": "جدة",
-      "area": "شريفة العمري"
-    },
-    {
       "outlet": "13-Al-Yasmin Mall",
-      "sales": 1537,
+      "sales": 1735,
       "city": "جدة",
       "area": "المنطقة الغربية"
+    },
+    {
+      "outlet": "05-Haifa Mall",
+      "sales": 1662,
+      "city": "جدة",
+      "area": "شريفة العمري"
     },
     {
       "outlet": "57-Sauq7",
@@ -196,21 +196,33 @@
     },
     {
       "outlet": "36-Al jubail Mall",
-      "sales": 1345,
+      "sales": 1414,
       "city": "المنطقة الشرقية",
       "area": "جهاد ايوبي"
     },
     {
       "outlet": "25-Rabwa Othaim Mall",
-      "sales": 1319,
+      "sales": 1386,
       "city": "الرياض",
       "area": "عبد الجليل الحبال "
     },
     {
       "outlet": "30-Tala Mall Riyadh",
-      "sales": 1315,
+      "sales": 1325,
       "city": "الرياض",
       "area": "عبدالله السرداح"
+    },
+    {
+      "outlet": "56- Aziz Mall 2",
+      "sales": 1312,
+      "city": "جدة",
+      "area": "شريفة العمري"
+    },
+    {
+      "outlet": "11-Jouri Mall",
+      "sales": 1260,
+      "city": "الطائف",
+      "area": "منطقة الطائف"
     },
     {
       "outlet": "50-Meem Plaza Riyadh",
@@ -219,16 +231,10 @@
       "area": "عبد الجليل الحبال "
     },
     {
-      "outlet": "56- Aziz Mall 2",
-      "sales": 1115,
-      "city": "جدة",
-      "area": "شريفة العمري"
-    },
-    {
-      "outlet": "11-Jouri Mall",
-      "sales": 1053,
-      "city": "الطائف",
-      "area": "منطقة الطائف"
+      "outlet": "32-Atyaf Mall Riyadh",
+      "sales": 1180,
+      "city": "الرياض",
+      "area": "محمدكلو"
     },
     {
       "outlet": "15-Riyadh Othaim Mall",
@@ -243,14 +249,14 @@
       "area": "اماني عسيري"
     },
     {
-      "outlet": "32-Atyaf Mall Riyadh",
-      "sales": 681,
-      "city": "الرياض",
-      "area": "محمدكلو"
+      "outlet": "17-Arar Othaim Mall",
+      "sales": 597,
+      "city": "عرعر",
+      "area": "خليل الصانع"
     },
     {
       "outlet": "39-Salam Mall Riyadh",
-      "sales": 350,
+      "sales": 449,
       "city": "الرياض",
       "area": "عبد الجليل الحبال "
     },
@@ -554,7 +560,7 @@
   "mtd": [
     {
       "outlet": "27-Dhahran Mall khobar",
-      "sales": 343583,
+      "sales": 344119,
       "city": "المنطقة الشرقية",
       "area": "جهاد ايوبي",
       "target": 1250000
@@ -568,7 +574,7 @@
     },
     {
       "outlet": "06-Red Sea Mall",
-      "sales": 252502,
+      "sales": 254554,
       "city": "جدة",
       "area": "المنطقة الغربية",
       "target": 920000
@@ -582,7 +588,7 @@
     },
     {
       "outlet": "29-Al Nakheel Mall Riyadh",
-      "sales": 220243,
+      "sales": 221298,
       "city": "الرياض",
       "area": "محمدكلو",
       "target": 920000
@@ -603,31 +609,38 @@
     },
     {
       "outlet": "16-Ehsa Othaim Mall",
-      "sales": 176631,
+      "sales": 177343,
       "city": "الاحساء",
       "area": "جهاد ايوبي",
       "target": 625000
     },
     {
       "outlet": "04-Andalos Mall",
-      "sales": 171427,
+      "sales": 171556,
       "city": "جدة",
       "area": "عبيدة السباعي",
       "target": 680000
     },
     {
       "outlet": "38-Al_Riyadh Park",
-      "sales": 161090,
+      "sales": 161187,
       "city": "الرياض",
       "area": "محمدكلو",
       "target": 660000
     },
     {
       "outlet": "26-Al-Noor Mall Madinah",
-      "sales": 147632,
+      "sales": 147670,
       "city": "المدينة",
       "area": "خليل الصانع",
       "target": 520000
+    },
+    {
+      "outlet": "21-Abha Al_Rashid Mall New",
+      "sales": 147641,
+      "city": "ابها",
+      "area": "اماني عسيري",
+      "target": 650000
     },
     {
       "outlet": "50-Meem Plaza Riyadh",
@@ -637,15 +650,8 @@
       "target": 500000
     },
     {
-      "outlet": "21-Abha Al_Rashid Mall New",
-      "sales": 146226,
-      "city": "ابها",
-      "area": "اماني عسيري",
-      "target": 650000
-    },
-    {
       "outlet": "13-Al-Yasmin Mall",
-      "sales": 143194,
+      "sales": 143392,
       "city": "جدة",
       "area": "المنطقة الغربية",
       "target": 590000
@@ -659,14 +665,14 @@
     },
     {
       "outlet": "48 - Jeddah Park",
-      "sales": 140427,
+      "sales": 140793,
       "city": "جدة",
       "area": "شريفة العمري",
       "target": 620000
     },
     {
       "outlet": "07-Arab Mall",
-      "sales": 136001,
+      "sales": 136378,
       "city": "جدة",
       "area": "شريفة العمري",
       "target": 600000
@@ -679,15 +685,15 @@
       "target": 530000
     },
     {
-      "outlet": "46-Khaleej Mall Riyadh",
-      "sales": 118327,
+      "outlet": "51-Park Avenue Riyadh",
+      "sales": 118662,
       "city": "الرياض",
       "area": "محمدكلو",
       "target": 530000
     },
     {
-      "outlet": "51-Park Avenue Riyadh",
-      "sales": 117489,
+      "outlet": "46-Khaleej Mall Riyadh",
+      "sales": 118366,
       "city": "الرياض",
       "area": "محمدكلو",
       "target": 530000
@@ -708,7 +714,7 @@
     },
     {
       "outlet": "42-Dareen Mall Dammam",
-      "sales": 105467,
+      "sales": 105566,
       "city": "المنطقة الشرقية",
       "area": "جهاد ايوبي",
       "target": 400000
@@ -728,29 +734,29 @@
       "target": 330000
     },
     {
-      "outlet": "55- Jabl Omar",
-      "sales": 102394,
-      "city": "مكة",
-      "area": "رضوان عطيوي",
-      "target": 370000
-    },
-    {
       "outlet": "09-Al-Salam Mall",
-      "sales": 102183,
+      "sales": 102916,
       "city": "جدة",
       "area": "عبيدة السباعي",
       "target": 360000
     },
     {
+      "outlet": "55- Jabl Omar",
+      "sales": 102561,
+      "city": "مكة",
+      "area": "رضوان عطيوي",
+      "target": 370000
+    },
+    {
       "outlet": "19-Hail Othaim Mall",
-      "sales": 92291,
+      "sales": 92469,
       "city": "حائل",
       "area": "عبدالله السرداح",
       "target": 390000
     },
     {
       "outlet": "11-Jouri Mall",
-      "sales": 91753,
+      "sales": 91960,
       "city": "الطائف",
       "area": "منطقة الطائف",
       "target": 370000
@@ -771,7 +777,7 @@
     },
     {
       "outlet": "56- Aziz Mall 2",
-      "sales": 86487,
+      "sales": 86684,
       "city": "جدة",
       "area": "شريفة العمري",
       "target": 350000
@@ -785,14 +791,14 @@
     },
     {
       "outlet": "39-Salam Mall Riyadh",
-      "sales": 80086,
+      "sales": 80185,
       "city": "الرياض",
       "area": "عبد الجليل الحبال ",
       "target": 330000
     },
     {
       "outlet": "30-Tala Mall Riyadh",
-      "sales": 77070,
+      "sales": 77080,
       "city": "الرياض",
       "area": "عبدالله السرداح",
       "target": 300000
@@ -806,7 +812,7 @@
     },
     {
       "outlet": "36-Al jubail Mall",
-      "sales": 68822,
+      "sales": 68891,
       "city": "المنطقة الشرقية",
       "area": "جهاد ايوبي",
       "target": 240000
@@ -820,21 +826,21 @@
     },
     {
       "outlet": "05-Haifa Mall",
-      "sales": 61566,
+      "sales": 61595,
       "city": "جدة",
       "area": "شريفة العمري",
       "target": 280000
     },
     {
       "outlet": "32-Atyaf Mall Riyadh",
-      "sales": 60481,
+      "sales": 60980,
       "city": "الرياض",
       "area": "محمدكلو",
       "target": 260000
     },
     {
       "outlet": "25-Rabwa Othaim Mall",
-      "sales": 59385,
+      "sales": 59452,
       "city": "الرياض",
       "area": "عبد الجليل الحبال ",
       "target": 270000
@@ -869,7 +875,7 @@
     },
     {
       "outlet": "17-Arar Othaim Mall",
-      "sales": 26658,
+      "sales": 27255,
       "city": "عرعر",
       "area": "خليل الصانع",
       "target": 95000
