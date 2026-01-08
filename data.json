@@ -1,6 +1,6 @@
 {
   "date": "2026-01-08",
-  "lastUpdate": "09:17 AM",
+  "lastUpdate": "09:32 AM",
   "today": [
     {
       "outlet": "19-Hail Othaim Mall",
@@ -15,16 +15,16 @@
       "area": "خليل الصانع"
     },
     {
+      "outlet": "06-Red Sea Mall",
+      "sales": 560,
+      "city": "جدة",
+      "area": "المنطقة الغربية"
+    },
+    {
       "outlet": "22-Tabuk Park",
       "sales": 395,
       "city": "تبوك",
       "area": "خليل الصانع"
-    },
-    {
-      "outlet": "06-Red Sea Mall",
-      "sales": 364,
-      "city": "جدة",
-      "area": "المنطقة الغربية"
     },
     {
       "outlet": "28-Al Nakheel Mall Dammam",
@@ -34,7 +34,7 @@
     },
     {
       "outlet": "55- Jabl Omar",
-      "sales": 19,
+      "sales": 58,
       "city": "مكة",
       "area": "رضوان عطيوي"
     }
@@ -340,7 +340,7 @@
     },
     {
       "outlet": "06-Red Sea Mall",
-      "sales": 244440,
+      "sales": 244636,
       "city": "جدة",
       "area": "المنطقة الغربية",
       "target": 920000
@@ -487,7 +487,7 @@
     },
     {
       "outlet": "55- Jabl Omar",
-      "sales": 99946,
+      "sales": 99985,
       "city": "مكة",
       "area": "رضوان عطيوي",
       "target": 370000
