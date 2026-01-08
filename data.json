@@ -1,7 +1,13 @@
 {
   "date": "2026-01-08",
-  "lastUpdate": "09:32 AM",
+  "lastUpdate": "09:47 AM",
   "today": [
+    {
+      "outlet": "06-Red Sea Mall",
+      "sales": 917,
+      "city": "جدة",
+      "area": "المنطقة الغربية"
+    },
     {
       "outlet": "19-Hail Othaim Mall",
       "sales": 687,
@@ -13,12 +19,6 @@
       "sales": 577,
       "city": "المدينة",
       "area": "خليل الصانع"
-    },
-    {
-      "outlet": "06-Red Sea Mall",
-      "sales": 560,
-      "city": "جدة",
-      "area": "المنطقة الغربية"
     },
     {
       "outlet": "22-Tabuk Park",
@@ -33,10 +33,22 @@
       "area": "جهاد ايوبي"
     },
     {
+      "outlet": "36-Al jubail Mall",
+      "sales": 198,
+      "city": "المنطقة الشرقية",
+      "area": "جهاد ايوبي"
+    },
+    {
       "outlet": "55- Jabl Omar",
       "sales": 58,
       "city": "مكة",
       "area": "رضوان عطيوي"
+    },
+    {
+      "outlet": "16-Ehsa Othaim Mall",
+      "sales": -99,
+      "city": "الاحساء",
+      "area": "جهاد ايوبي"
     }
   ],
   "yesterday": [
@@ -340,7 +352,7 @@
     },
     {
       "outlet": "06-Red Sea Mall",
-      "sales": 244636,
+      "sales": 244993,
       "city": "جدة",
       "area": "المنطقة الغربية",
       "target": 920000
@@ -375,7 +387,7 @@
     },
     {
       "outlet": "16-Ehsa Othaim Mall",
-      "sales": 173571,
+      "sales": 173472,
       "city": "الاحساء",
       "area": "جهاد ايوبي",
       "target": 625000
@@ -578,7 +590,7 @@
     },
     {
       "outlet": "36-Al jubail Mall",
-      "sales": 67477,
+      "sales": 67675,
       "city": "المنطقة الشرقية",
       "area": "جهاد ايوبي",
       "target": 240000
