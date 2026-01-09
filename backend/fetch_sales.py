@@ -375,6 +375,11 @@ def push_to_github():
         with open(OUTPUT_JSON, 'r', encoding='utf-8') as f:
             new_data_content = f.read()
 
+        # FIX: The local data.json conflicts with the checkout.
+        # Since we have the content in memory, we remove the local file to allow checkout.
+        if os.path.exists(OUTPUT_JSON):
+            os.remove(OUTPUT_JSON)
+
         # 3. Force switch to main branch and reset to match remote exactly
         #    (This fixes 'detached HEAD' and 'divergent branch' issues)
         subprocess.run(["git", "checkout", "-B", "main", "origin/main"], check=True)
