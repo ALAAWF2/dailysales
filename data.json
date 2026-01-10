@@ -1,6 +1,6 @@
 {
   "date": "2026-01-10",
-  "lastUpdate": "09:33 AM",
+  "lastUpdate": "09:51 AM",
   "today": [
     {
       "outlet": "04-Andalos Mall",
@@ -57,6 +57,12 @@
       "area": "محمدكلو"
     },
     {
+      "outlet": "53-Al Basateen Mall",
+      "sales": 317,
+      "city": "جدة",
+      "area": "عبيدة السباعي"
+    },
+    {
       "outlet": "48 - Jeddah Park",
       "sales": 273,
       "city": "جدة",
@@ -75,16 +81,16 @@
       "area": "محمدكلو"
     },
     {
-      "outlet": "29-Al Nakheel Mall Riyadh",
-      "sales": 138,
-      "city": "الرياض",
-      "area": "محمدكلو"
-    },
-    {
       "outlet": "47-Al-Nakheel Plaza",
       "sales": 138,
       "city": "القصيم",
       "area": "عبدالله السرداح"
+    },
+    {
+      "outlet": "29-Al Nakheel Mall Riyadh",
+      "sales": 138,
+      "city": "الرياض",
+      "area": "محمدكلو"
     },
     {
       "outlet": "06-Red Sea Mall",
@@ -103,6 +109,12 @@
       "sales": 78,
       "city": "مكة",
       "area": "رضوان عطيوي"
+    },
+    {
+      "outlet": "05-Haifa Mall",
+      "sales": 19,
+      "city": "جدة",
+      "area": "شريفة العمري"
     }
   ],
   "yesterday": [
@@ -658,7 +670,7 @@
     },
     {
       "outlet": "05-Haifa Mall",
-      "sales": 78139,
+      "sales": 78158,
       "city": "جدة",
       "area": "شريفة العمري",
       "target": 280000
@@ -700,7 +712,7 @@
     },
     {
       "outlet": "53-Al Basateen Mall",
-      "sales": 45175,
+      "sales": 45492,
       "city": "جدة",
       "area": "عبيدة السباعي",
       "target": 135000
