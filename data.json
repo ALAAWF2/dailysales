@@ -1,12 +1,18 @@
 {
   "date": "2026-01-11",
-  "lastUpdate": "09:33 AM",
+  "lastUpdate": "09:48 AM",
   "today": [
     {
       "outlet": "22-Tabuk Park",
       "sales": 2583,
       "city": "تبوك",
       "area": "خليل الصانع"
+    },
+    {
+      "outlet": "27-Dhahran Mall khobar",
+      "sales": 734,
+      "city": "المنطقة الشرقية",
+      "area": "جهاد ايوبي"
     },
     {
       "outlet": "07-Arab Mall",
@@ -33,6 +39,12 @@
       "area": "المنطقة الغربية"
     },
     {
+      "outlet": "54-THE VILLAGE",
+      "sales": 299,
+      "city": "جدة",
+      "area": "المنطقة الغربية"
+    },
+    {
       "outlet": "04-Andalos Mall",
       "sales": 198,
       "city": "جدة",
@@ -40,7 +52,7 @@
     },
     {
       "outlet": "23-Alia Mall Madinah",
-      "sales": 116,
+      "sales": 174,
       "city": "المدينة",
       "area": "خليل الصانع"
     },
@@ -49,6 +61,12 @@
       "sales": 99,
       "city": "مكة",
       "area": "رضوان عطيوي"
+    },
+    {
+      "outlet": "16-Ehsa Othaim Mall",
+      "sales": 99,
+      "city": "الاحساء",
+      "area": "جهاد ايوبي"
     }
   ],
   "yesterday": [
@@ -338,7 +356,7 @@
   "mtd": [
     {
       "outlet": "27-Dhahran Mall khobar",
-      "sales": 484385,
+      "sales": 485119,
       "city": "المنطقة الشرقية",
       "area": "جهاد ايوبي",
       "target": 1250000
@@ -373,14 +391,14 @@
     },
     {
       "outlet": "54-THE VILLAGE",
-      "sales": 287907,
+      "sales": 288206,
       "city": "جدة",
       "area": "المنطقة الغربية",
       "target": 700000
     },
     {
       "outlet": "16-Ehsa Othaim Mall",
-      "sales": 253082,
+      "sales": 253181,
       "city": "الاحساء",
       "area": "جهاد ايوبي",
       "target": 625000
@@ -394,7 +412,7 @@
     },
     {
       "outlet": "23-Alia Mall Madinah",
-      "sales": 237326,
+      "sales": 237384,
       "city": "المدينة",
       "area": "خليل الصانع",
       "target": 620000
