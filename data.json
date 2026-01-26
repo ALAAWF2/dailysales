@@ -19,7 +19,7 @@
         ]
     },
     "date": "2026-01-26",
-    "lastUpdate": "09:30 AM",
+    "lastUpdate": "09:45 AM",
     "today": [
         {
             "outlet": "04-Andalos Mall",
@@ -103,13 +103,13 @@
             "outlet": "12-Al_Hamra Mall",
             "city": "Unknown",
             "area": "محمدكلو",
-            "sales": 0
+            "sales": -99
         },
         {
             "outlet": "15-Riyadh Othaim Mall",
             "city": "Unknown",
             "area": "عبد الجليل الحبال",
-            "sales": 0
+            "sales": 99
         },
         {
             "outlet": "25-Rabwa Othaim Mall",
@@ -720,14 +720,14 @@
             "outlet": "12-Al_Hamra Mall",
             "city": "Unknown",
             "area": "محمدكلو",
-            "sales": 412802,
+            "sales": 412703,
             "target": 680000
         },
         {
             "outlet": "15-Riyadh Othaim Mall",
             "city": "Unknown",
             "area": "عبد الجليل الحبال",
-            "sales": 168739,
+            "sales": 168838,
             "target": 270000
         },
         {
