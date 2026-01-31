@@ -19,13 +19,13 @@
         ]
     },
     "date": "2026-02-01",
-    "lastUpdate": "12:18 AM",
+    "lastUpdate": "12:31 AM",
     "today": [
         {
             "outlet": "04-Andalos Mall",
             "city": "Unknown",
             "area": "عبيدة السباعي",
-            "sales": 0
+            "sales": 99
         },
         {
             "outlet": "05-Haifa Mall",
@@ -187,7 +187,7 @@
             "outlet": "20-Sitten Street Makkah",
             "city": "Unknown",
             "area": "رضوان عطيوي",
-            "sales": 0
+            "sales": 765
         },
         {
             "outlet": "55- Jabl Omar",
@@ -211,7 +211,7 @@
             "outlet": "23-Alia Mall Madinah",
             "city": "Unknown",
             "area": "خليل الصانع",
-            "sales": 0
+            "sales": 39
         },
         {
             "outlet": "26-Al-Noor Mall Madinah",
@@ -629,7 +629,7 @@
             "outlet": "04-Andalos Mall",
             "city": "Unknown",
             "area": "عبيدة السباعي",
-            "sales": 0,
+            "sales": 99,
             "target": 0
         },
         {
@@ -818,7 +818,7 @@
             "outlet": "20-Sitten Street Makkah",
             "city": "Unknown",
             "area": "رضوان عطيوي",
-            "sales": 0,
+            "sales": 765,
             "target": 0
         },
         {
@@ -846,7 +846,7 @@
             "outlet": "23-Alia Mall Madinah",
             "city": "Unknown",
             "area": "خليل الصانع",
-            "sales": 0,
+            "sales": 39,
             "target": 0
         },
         {
