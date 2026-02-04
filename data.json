@@ -19,13 +19,13 @@
         ]
     },
     "date": "2026-02-04",
-    "lastUpdate": "09:46 AM",
+    "lastUpdate": "10:01 AM",
     "today": [
         {
             "outlet": "04-Andalos Mall",
             "city": "Unknown",
             "area": "عبيدة السباعي",
-            "sales": 0
+            "sales": 99
         },
         {
             "outlet": "05-Haifa Mall",
@@ -205,13 +205,13 @@
             "outlet": "14-Al Kamal Mall",
             "city": "Unknown",
             "area": "منطقة الطائف",
-            "sales": 117
+            "sales": 278
         },
         {
             "outlet": "23-Alia Mall Madinah",
             "city": "Unknown",
             "area": "خليل الصانع",
-            "sales": 0
+            "sales": -99
         },
         {
             "outlet": "26-Al-Noor Mall Madinah",
@@ -223,7 +223,7 @@
             "outlet": "24-Yanbu Dana Mall",
             "city": "Unknown",
             "area": "خليل الصانع",
-            "sales": 0
+            "sales": 764
         },
         {
             "outlet": "16-Ehsa Othaim Mall",
@@ -277,7 +277,7 @@
             "outlet": "22-Tabuk Park",
             "city": "Unknown",
             "area": "خليل الصانع",
-            "sales": 0
+            "sales": 38
         },
         {
             "outlet": "27-Dhahran Mall khobar",
@@ -629,7 +629,7 @@
             "outlet": "04-Andalos Mall",
             "city": "Unknown",
             "area": "عبيدة السباعي",
-            "sales": 62121,
+            "sales": 62220,
             "target": 0
         },
         {
@@ -839,14 +839,14 @@
             "outlet": "14-Al Kamal Mall",
             "city": "Unknown",
             "area": "منطقة الطائف",
-            "sales": 11881,
+            "sales": 12042,
             "target": 0
         },
         {
             "outlet": "23-Alia Mall Madinah",
             "city": "Unknown",
             "area": "خليل الصانع",
-            "sales": 64533,
+            "sales": 64434,
             "target": 0
         },
         {
@@ -860,7 +860,7 @@
             "outlet": "24-Yanbu Dana Mall",
             "city": "Unknown",
             "area": "خليل الصانع",
-            "sales": 21382,
+            "sales": 22146,
             "target": 0
         },
         {
@@ -923,7 +923,7 @@
             "outlet": "22-Tabuk Park",
             "city": "Unknown",
             "area": "خليل الصانع",
-            "sales": 40216,
+            "sales": 40254,
             "target": 0
         },
         {
