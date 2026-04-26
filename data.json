@@ -19,13 +19,13 @@
         ]
     },
     "date": "2026-04-26",
-    "lastUpdate": "12:47 PM",
+    "lastUpdate": "01:02 PM",
     "today": [
         {
             "outlet": "04-Andalos Mall",
             "city": "Unknown",
             "area": "عبيدة السباعي",
-            "sales": 377
+            "sales": 713
         },
         {
             "outlet": "05-Haifa Mall",
@@ -37,7 +37,7 @@
             "outlet": "06-Red Sea Mall",
             "city": "Unknown",
             "area": "المنطقة الغربية",
-            "sales": 1684
+            "sales": 1802
         },
         {
             "outlet": "07-Arab Mall",
@@ -79,7 +79,7 @@
             "outlet": "54-THE VILLAGE",
             "city": "Unknown",
             "area": "المنطقة الغربية",
-            "sales": 1816
+            "sales": 1942
         },
         {
             "outlet": "56- Aziz Mall 2",
@@ -91,7 +91,7 @@
             "outlet": "57-Sauq7",
             "city": "Unknown",
             "area": "عبيدة السباعي",
-            "sales": 33
+            "sales": 2144
         },
         {
             "outlet": "PLATFORMS",
@@ -163,7 +163,7 @@
             "outlet": "46-Khaleej Mall Riyadh",
             "city": "Unknown",
             "area": "محمدكلو",
-            "sales": 872
+            "sales": 1070
         },
         {
             "outlet": "50-Meem Plaza Riyadh",
@@ -211,7 +211,7 @@
             "outlet": "23-Alia Mall Madinah",
             "city": "Unknown",
             "area": "خليل الصانع",
-            "sales": 1468
+            "sales": 1621
         },
         {
             "outlet": "26-Al-Noor Mall Madinah",
@@ -265,13 +265,13 @@
             "outlet": "43-Mujan Park",
             "city": "Unknown",
             "area": "اماني عسيري",
-            "sales": 690
+            "sales": 729
         },
         {
             "outlet": "52-Al_Baha Mall",
             "city": "Unknown",
             "area": "اماني عسيري",
-            "sales": 29
+            "sales": 68
         },
         {
             "outlet": "22-Tabuk Park",
@@ -331,13 +331,13 @@
             "outlet": "1906-LAVANDA PARK",
             "city": "Unknown",
             "area": "اماني عسيري",
-            "sales": 2541
+            "sales": 2559
         },
         {
             "outlet": "1114-Malgha Mall",
             "city": "Unknown",
             "area": "محمدكلو",
-            "sales": 1423
+            "sales": 2256
         }
     ],
     "yesterday": [
@@ -665,7 +665,7 @@
             "outlet": "04-Andalos Mall",
             "city": "Unknown",
             "area": "عبيدة السباعي",
-            "sales": 396904,
+            "sales": 397240,
             "target": 600000
         },
         {
@@ -679,7 +679,7 @@
             "outlet": "06-Red Sea Mall",
             "city": "Unknown",
             "area": "المنطقة الغربية",
-            "sales": 651231,
+            "sales": 651349,
             "target": 900000
         },
         {
@@ -728,7 +728,7 @@
             "outlet": "54-THE VILLAGE",
             "city": "Unknown",
             "area": "المنطقة الغربية",
-            "sales": 502629,
+            "sales": 502755,
             "target": 650000
         },
         {
@@ -742,7 +742,7 @@
             "outlet": "57-Sauq7",
             "city": "Unknown",
             "area": "عبيدة السباعي",
-            "sales": 159096,
+            "sales": 161207,
             "target": 250000
         },
         {
@@ -826,7 +826,7 @@
             "outlet": "46-Khaleej Mall Riyadh",
             "city": "Unknown",
             "area": "محمدكلو",
-            "sales": 395000,
+            "sales": 395198,
             "target": 450000
         },
         {
@@ -882,7 +882,7 @@
             "outlet": "23-Alia Mall Madinah",
             "city": "Unknown",
             "area": "خليل الصانع",
-            "sales": 344703,
+            "sales": 344856,
             "target": 580000
         },
         {
@@ -945,14 +945,14 @@
             "outlet": "43-Mujan Park",
             "city": "Unknown",
             "area": "اماني عسيري",
-            "sales": 285077,
+            "sales": 285116,
             "target": 460000
         },
         {
             "outlet": "52-Al_Baha Mall",
             "city": "Unknown",
             "area": "اماني عسيري",
-            "sales": 142586,
+            "sales": 142625,
             "target": 200000
         },
         {
@@ -1022,14 +1022,14 @@
             "outlet": "1906-LAVANDA PARK",
             "city": "Unknown",
             "area": "اماني عسيري",
-            "sales": 142034,
+            "sales": 142052,
             "target": 250000
         },
         {
             "outlet": "1114-Malgha Mall",
             "city": "Unknown",
             "area": "محمدكلو",
-            "sales": 300294,
+            "sales": 301127,
             "target": 400000
         }
     ]
