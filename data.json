@@ -17,7 +17,7 @@
         ]
     },
     "date": "2026-05-14",
-    "lastUpdate": "12:32 PM",
+    "lastUpdate": "12:47 PM",
     "today": [
         {
             "outlet": "PLATFORMS",
@@ -35,13 +35,13 @@
             "outlet": "05-Haifa Mall",
             "city": "Unknown",
             "area": "Unknown",
-            "sales": 141
+            "sales": 200
         },
         {
             "outlet": "07-Arab Mall",
             "city": "Unknown",
             "area": "Unknown",
-            "sales": 356
+            "sales": 410
         },
         {
             "outlet": "48 - Jeddah Park",
@@ -59,13 +59,13 @@
             "outlet": "22-Tabuk Park",
             "city": "Unknown",
             "area": "المنطقة الشمالية",
-            "sales": 429
+            "sales": 468
         },
         {
             "outlet": "23-Alia Mall Madinah",
             "city": "Unknown",
             "area": "المنطقة الشمالية",
-            "sales": 1909
+            "sales": 2122
         },
         {
             "outlet": "24-Yanbu Dana Mall",
@@ -89,7 +89,7 @@
             "outlet": "06-Red Sea Mall",
             "city": "Unknown",
             "area": "المنطقة الغربية",
-            "sales": 928
+            "sales": 1026
         },
         {
             "outlet": "13-Al-Yasmin Mall",
@@ -113,7 +113,7 @@
             "outlet": "1906-LAVANDA PARK",
             "city": "Unknown",
             "area": "اماني عسيري",
-            "sales": 203
+            "sales": 402
         },
         {
             "outlet": "21-Abha Al_Rashid Mall New",
@@ -137,13 +137,13 @@
             "outlet": "16-Ehsa Othaim Mall",
             "city": "Unknown",
             "area": "جهاد ايوبي",
-            "sales": 2000
+            "sales": 2107
         },
         {
             "outlet": "27-Dhahran Mall khobar",
             "city": "Unknown",
             "area": "جهاد ايوبي",
-            "sales": 4722
+            "sales": 7696
         },
         {
             "outlet": "28-Al Nakheel Mall Dammam",
@@ -167,7 +167,7 @@
             "outlet": "49-AlAhsa Mall",
             "city": "Unknown",
             "area": "جهاد ايوبي",
-            "sales": 347
+            "sales": 643
         },
         {
             "outlet": "08-Makkah Mall",
@@ -227,7 +227,7 @@
             "outlet": "04-Andalos Mall",
             "city": "Unknown",
             "area": "عبيدة السباعي",
-            "sales": 1657
+            "sales": 1795
         },
         {
             "outlet": "09-Al-Salam Mall",
@@ -239,7 +239,7 @@
             "outlet": "18-Al_Khayyat Center",
             "city": "Unknown",
             "area": "عبيدة السباعي",
-            "sales": 0
+            "sales": 187
         },
         {
             "outlet": "53-Al Basateen Mall",
@@ -263,7 +263,7 @@
             "outlet": "1115-Alrabie Mall",
             "city": "Unknown",
             "area": "محمدكلو",
-            "sales": 277
+            "sales": 1076
         },
         {
             "outlet": "12-Al_Hamra Mall",
@@ -281,7 +281,7 @@
             "outlet": "32-Atyaf Mall Riyadh",
             "city": "Unknown",
             "area": "محمدكلو",
-            "sales": 168
+            "sales": 255
         },
         {
             "outlet": "38-Al_Riyadh Park",
@@ -299,13 +299,13 @@
             "outlet": "46-Khaleej Mall Riyadh",
             "city": "Unknown",
             "area": "محمدكلو",
-            "sales": 484
+            "sales": 822
         },
         {
             "outlet": "51-Park Avenue Riyadh",
             "city": "Unknown",
             "area": "محمدكلو",
-            "sales": 730
+            "sales": 928
         },
         {
             "outlet": "15-Riyadh Othaim Mall",
@@ -665,14 +665,14 @@
             "outlet": "05-Haifa Mall",
             "city": "Unknown",
             "area": "Unknown",
-            "sales": 101400,
+            "sales": 101459,
             "target": 350000
         },
         {
             "outlet": "07-Arab Mall",
             "city": "Unknown",
             "area": "Unknown",
-            "sales": 221376,
+            "sales": 221430,
             "target": 600000
         },
         {
@@ -693,14 +693,14 @@
             "outlet": "22-Tabuk Park",
             "city": "Unknown",
             "area": "المنطقة الشمالية",
-            "sales": 183186,
+            "sales": 183225,
             "target": 590000
         },
         {
             "outlet": "23-Alia Mall Madinah",
             "city": "Unknown",
             "area": "المنطقة الشمالية",
-            "sales": 201446,
+            "sales": 201659,
             "target": 795000
         },
         {
@@ -728,7 +728,7 @@
             "outlet": "06-Red Sea Mall",
             "city": "Unknown",
             "area": "المنطقة الغربية",
-            "sales": 395429,
+            "sales": 395527,
             "target": 950000
         },
         {
@@ -756,7 +756,7 @@
             "outlet": "1906-LAVANDA PARK",
             "city": "Unknown",
             "area": "اماني عسيري",
-            "sales": 84379,
+            "sales": 84578,
             "target": 250000
         },
         {
@@ -784,14 +784,14 @@
             "outlet": "16-Ehsa Othaim Mall",
             "city": "Unknown",
             "area": "جهاد ايوبي",
-            "sales": 267024,
+            "sales": 267131,
             "target": 770000
         },
         {
             "outlet": "27-Dhahran Mall khobar",
             "city": "Unknown",
             "area": "جهاد ايوبي",
-            "sales": 504180,
+            "sales": 507154,
             "target": 1490000
         },
         {
@@ -819,7 +819,7 @@
             "outlet": "49-AlAhsa Mall",
             "city": "Unknown",
             "area": "جهاد ايوبي",
-            "sales": 128504,
+            "sales": 128800,
             "target": 350000
         },
         {
@@ -889,7 +889,7 @@
             "outlet": "04-Andalos Mall",
             "city": "Unknown",
             "area": "عبيدة السباعي",
-            "sales": 212226,
+            "sales": 212364,
             "target": 760000
         },
         {
@@ -903,7 +903,7 @@
             "outlet": "18-Al_Khayyat Center",
             "city": "Unknown",
             "area": "عبيدة السباعي",
-            "sales": 105178,
+            "sales": 105365,
             "target": 390000
         },
         {
@@ -931,7 +931,7 @@
             "outlet": "1115-Alrabie Mall",
             "city": "Unknown",
             "area": "محمدكلو",
-            "sales": 95929,
+            "sales": 96728,
             "target": 300000
         },
         {
@@ -952,7 +952,7 @@
             "outlet": "32-Atyaf Mall Riyadh",
             "city": "Unknown",
             "area": "محمدكلو",
-            "sales": 112870,
+            "sales": 112957,
             "target": 280000
         },
         {
@@ -973,14 +973,14 @@
             "outlet": "46-Khaleej Mall Riyadh",
             "city": "Unknown",
             "area": "محمدكلو",
-            "sales": 204894,
+            "sales": 205232,
             "target": 620000
         },
         {
             "outlet": "51-Park Avenue Riyadh",
             "city": "Unknown",
             "area": "محمدكلو",
-            "sales": 211233,
+            "sales": 211431,
             "target": 630000
         },
         {
