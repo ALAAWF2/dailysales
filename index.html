@@ -238,6 +238,7 @@
         <div class="total-display">
             <div class="total-label">Total Sales (<span id="totalModeLabel">Today</span>)</div>
             <div class="total-value" id="totalValue">-</div>
+            <div id="totalTargetContainer" class="target-container" style="display: none;"></div>
         </div>
     </div>
 
@@ -353,9 +354,36 @@
 
             // Calculate Total
             const totalSales = list.reduce((sum, item) => sum + (item.sales || 0), 0);
+            const totalTarget = list.reduce((sum, item) => sum + (item.target || 0), 0);
+
             document.getElementById('totalValue').textContent = new Intl.NumberFormat('en-US', {
                 maximumFractionDigits: 0
             }).format(totalSales);
+
+            const targetContainer = document.getElementById('totalTargetContainer');
+            if (totalTarget > 0) {
+                const pct = Math.min((totalSales / totalTarget) * 100, 100);
+                const pctDisplay = Math.round((totalSales / totalTarget) * 100);
+                
+                let color = '#ef4444'; // Red < 50
+                if(pctDisplay >= 80) color = '#22c55e'; // Green >= 80
+                else if(pctDisplay >= 50) color = '#f97316'; // Orange 50-79
+                
+                const formattedTarget = new Intl.NumberFormat('en-US', { maximumFractionDigits:0 }).format(totalTarget);
+                
+                targetContainer.innerHTML = `
+                    <div class="progress-bar-bg">
+                        <div class="progress-bar-fill" style="width: ${pct}%; background-color: ${color};"></div>
+                    </div>
+                    <div class="target-text">
+                        <span>Goal: ${formattedTarget}</span>
+                        <span>${pctDisplay}%</span>
+                    </div>
+                `;
+                targetContainer.style.display = 'block';
+            } else {
+                targetContainer.style.display = 'none';
+            }
 
             if (!list.length) {
                 grid.innerHTML =
@@ -376,7 +404,7 @@
                 const signClass = item.sales >= 0 ? 'positive' : 'negative';
                 
                 let targetHtml = '';
-                if(currentMode === 'mtd') {
+                if(item.target > 0) {
                     const target = item.target || 0;
                     // Prevent division by zero
                     const pct = target > 0 ? Math.min((item.sales / target) * 100, 100) : 0; 
