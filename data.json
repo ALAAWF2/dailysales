@@ -17,7 +17,7 @@
         ]
     },
     "date": "2026-08-11",
-    "lastUpdate": "11:02 AM",
+    "lastUpdate": "11:18 AM",
     "today": [
         {
             "outlet": "PLATFORMS",
@@ -51,7 +51,7 @@
             "outlet": "06-Red Sea Mall",
             "city": "Unknown",
             "area": "المنطقة الغربية",
-            "sales": 0,
+            "sales": 465,
             "target": 32258
         },
         {
@@ -65,7 +65,7 @@
             "outlet": "07-Arab Mall",
             "city": "Unknown",
             "area": "الغربية 2",
-            "sales": 0,
+            "sales": -71,
             "target": 18065
         },
         {
@@ -86,7 +86,7 @@
             "outlet": "18-Al_Khayyat Center",
             "city": "Unknown",
             "area": "عبيدة السباعي",
-            "sales": 664,
+            "sales": 365,
             "target": 10323
         },
         {
@@ -107,7 +107,7 @@
             "outlet": "54-THE VILLAGE",
             "city": "Unknown",
             "area": "المنطقة الغربية",
-            "sales": 156,
+            "sales": 185,
             "target": 23710
         },
         {
@@ -128,7 +128,7 @@
             "outlet": "12-Al_Hamra Mall",
             "city": "Unknown",
             "area": "محمدكلو",
-            "sales": 107,
+            "sales": 166,
             "target": 19677
         },
         {
@@ -240,14 +240,14 @@
             "outlet": "24-Yanbu Dana Mall",
             "city": "Unknown",
             "area": "المنطقة الشمالية",
-            "sales": 367,
+            "sales": 425,
             "target": 8226
         },
         {
             "outlet": "16-Ehsa Othaim Mall",
             "city": "Unknown",
             "area": "جهاد ايوبي",
-            "sales": 1166,
+            "sales": 1514,
             "target": 18710
         },
         {
@@ -303,14 +303,14 @@
             "outlet": "27-Dhahran Mall khobar",
             "city": "Unknown",
             "area": "جهاد ايوبي",
-            "sales": 1037,
+            "sales": 1536,
             "target": 39355
         },
         {
             "outlet": "1906-LAVANDA PARK",
             "city": "Unknown",
             "area": "اماني عسيري",
-            "sales": 78,
+            "sales": 377,
             "target": 8548
         },
         {
@@ -345,7 +345,7 @@
             "outlet": "08-Makkah Mall",
             "city": "Unknown",
             "area": "رضوان عطيوي",
-            "sales": 889,
+            "sales": 1856,
             "target": 27581
         },
         {
@@ -359,7 +359,7 @@
             "outlet": "11-Jouri Mall",
             "city": "Unknown",
             "area": "رضوان عطيوي",
-            "sales": 664,
+            "sales": 762,
             "target": 12742
         },
         {
@@ -783,7 +783,7 @@
             "outlet": "06-Red Sea Mall",
             "city": "Unknown",
             "area": "المنطقة الغربية",
-            "sales": 293650,
+            "sales": 294115,
             "target": 1000000
         },
         {
@@ -797,7 +797,7 @@
             "outlet": "07-Arab Mall",
             "city": "Unknown",
             "area": "الغربية 2",
-            "sales": 174263,
+            "sales": 174192,
             "target": 560000
         },
         {
@@ -818,7 +818,7 @@
             "outlet": "18-Al_Khayyat Center",
             "city": "Unknown",
             "area": "عبيدة السباعي",
-            "sales": 94730,
+            "sales": 94431,
             "target": 320000
         },
         {
@@ -839,7 +839,7 @@
             "outlet": "54-THE VILLAGE",
             "city": "Unknown",
             "area": "المنطقة الغربية",
-            "sales": 248089,
+            "sales": 248118,
             "target": 735000
         },
         {
@@ -860,7 +860,7 @@
             "outlet": "12-Al_Hamra Mall",
             "city": "Unknown",
             "area": "محمدكلو",
-            "sales": 215056,
+            "sales": 215115,
             "target": 610000
         },
         {
@@ -972,14 +972,14 @@
             "outlet": "24-Yanbu Dana Mall",
             "city": "Unknown",
             "area": "المنطقة الشمالية",
-            "sales": 92962,
+            "sales": 93020,
             "target": 255000
         },
         {
             "outlet": "16-Ehsa Othaim Mall",
             "city": "Unknown",
             "area": "جهاد ايوبي",
-            "sales": 199689,
+            "sales": 200037,
             "target": 580000
         },
         {
@@ -1035,14 +1035,14 @@
             "outlet": "27-Dhahran Mall khobar",
             "city": "Unknown",
             "area": "جهاد ايوبي",
-            "sales": 427720,
+            "sales": 428219,
             "target": 1220000
         },
         {
             "outlet": "1906-LAVANDA PARK",
             "city": "Unknown",
             "area": "اماني عسيري",
-            "sales": 86609,
+            "sales": 86908,
             "target": 265000
         },
         {
@@ -1077,7 +1077,7 @@
             "outlet": "08-Makkah Mall",
             "city": "Unknown",
             "area": "رضوان عطيوي",
-            "sales": 251489,
+            "sales": 252456,
             "target": 855000
         },
         {
@@ -1091,7 +1091,7 @@
             "outlet": "11-Jouri Mall",
             "city": "Unknown",
             "area": "رضوان عطيوي",
-            "sales": 149805,
+            "sales": 149903,
             "target": 395000
         },
         {
